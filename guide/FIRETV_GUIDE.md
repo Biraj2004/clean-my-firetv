@@ -69,7 +69,7 @@ A full device snapshot was created in `backup/` containing:
   - `[ Wi-Fi ]`: Direct network connectivity toggle and SSID selection.
   - `[ Bluetooth ]`: Direct Bluetooth device and controller pairing.
   - `[ Settings ]`: Fire OS system settings dashboard.
-- **23-App Curated Grid**: Ordered from SmartTube, JioHotstar, YuppTV, Vzy, Stremio, Sony LIV, Hoichoi, Zee5, Nuvio, Prime Video, discovery+, TizenTube Cobalt, BitChord TV, FanCode, VLC, Downloader, Send Files to TV, File Explorer, Steam Link, Xiaomi TV+, personalDNSfilter (#21), Screen Saver (#22), through Amazon Appstore at the very end (#23).
+- **24-App Curated Grid**: Ordered from SmartTube, JioHotstar, YuppTV, Vzy, Stremio, Sony LIV, Hoichoi, Zee5, Nuvio, Prime Video, discovery+, TizenTube Cobalt, BitChord TV, FanCode, SportzX (#15), VLC, Downloader, Send Files to TV, File Explorer, Steam Link, Xiaomi TV+, personalDNSfilter (#22), Screen Saver (#23), through Amazon Appstore at the very end (#24).
 - **Dynamic App Lifecycle**: Newly installed apps automatically surface; long-pressing any app tile provides `Move`, `Rename`, `Hide`, and `App info` (for instant uninstall/cache clearing). Unhiding is available in `[ Options ] -> Apps on home screen`.
 - **Airtight Amazon Home Suppression**: Multi-action boot receiver (`BOOT_COMPLETED`, `QUICKBOOT_POWERON`, `LOCKED_BOOT_COMPLETED` at priority 999) + persistent accessibility guard (`tv.dumbtv.home/.Guard`) prevent Amazon stock home from appearing on boot, wake, or app exit.
 

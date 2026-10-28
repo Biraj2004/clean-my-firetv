@@ -15,7 +15,7 @@ This document provides a complete, transparent inventory of every installed appl
 - **Single Sole Launcher**: [dumbtv-enhanced-home-v1.0.1.apk](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/dumbtv-enhanced-home-v1.0.1.apk) (`tv.dumbtv.home`) is established as the **only** launcher on the device. All secondary or test launchers (such as Plume Launcher) have been completely decommissioned and uninstalled.
 - **Debloat & Telemetry Elimination**: 51 promotional, telemetry, and background ad packages remain disabled.
 - **Wallpaper Integration**: Single background wallpaper (`assets/wallpaper-dark-ambient.jpg`) rendered with **95% dark dimming overlay** (`dim=95`).
-- **Network Hardening**: Native Cloudflare DNS-over-TLS (DoT) active (`1dot1dot1dot1.cloudflare-dns.com`).
+- **Network Hardening**: Local `personalDNSfilter` packet filter running on `tun0` blackholing Amazon OTA and telemetry domains to `127.0.0.1` with Cloudflare upstream.
 
 ---
 
@@ -39,16 +39,17 @@ All installed media, utility, privacy, and streaming applications are accounted 
 | 12 | **TizenTube Cobalt** | `io.gh.reisxd.tizentube.cobalt` | Video Streaming | Native Cobalt-based YouTube client (v2.0.3) |
 | 13 | **BitChord TV** | `com.music.bitchord.tv` | Music & Audio | High-fidelity ad-free music & audio player |
 | 14 | **FanCode** | `com.fancode.tv` | Live Sports | Official Android TV live sports streaming |
-| 15 | **VLC Media Player** | `org.videolan.vlc` | Utility Media Player | Universal codec video/audio playback engine |
-| 16 | **Downloader** | `com.esaba.downloader` | System Utility | Direct web browser & APK downloader |
-| 17 | **Send Files to TV** | `com.yablio.sendfilestotv` | File Transfer | Local Wi-Fi direct file transfer utility |
-| 18 | **File Explorer** | `visnkmr.apps.filexplorer` | File Manager | Local and USB filesystem management |
-| 19 | **Steam Link** | `com.valvesoftware.steamlink` | Gaming & Display | Low-latency PC game streaming to Fire TV |
-| 20 | **Xiaomi TV+** | `com.mitv.tvhome.mitvplus` | Live TV | Free ad-supported streaming TV channels |
-| 21 | **personalDNSfilter** | `dnsfilter.android` | DNS & Privacy | Local DNS packet filter & hard OTA/telemetry block |
-| 22 | **Screen Saver** | `com.amazon.ftv.screensaver` | Ambient Display | Native Fire OS ambient screen saver |
-| 23 | **Amazon Appstore** | `com.amazon.venezia` | Official Store | Official Amazon app installation & updates |
-| 24 | **DumbTV Home** | `tv.dumbtv.home` | System Launcher | Sole exclusive launcher with 4-chip header |
+| 15 | **SportzX** | `com.sportzx.live` | Live Sports & TV | Live sports events & television streaming |
+| 16 | **VLC Media Player** | `org.videolan.vlc` | Utility Media Player | Universal codec video/audio playback engine |
+| 17 | **Downloader** | `com.esaba.downloader` | System Utility | Direct web browser & APK downloader |
+| 18 | **Send Files to TV** | `com.yablio.sendfilestotv` | File Transfer | Local Wi-Fi direct file transfer utility |
+| 19 | **File Explorer** | `visnkmr.apps.filexplorer` | File Manager | Local and USB filesystem management |
+| 20 | **Steam Link** | `com.valvesoftware.steamlink` | Gaming & Display | Low-latency PC game streaming to Fire TV |
+| 21 | **Xiaomi TV+** | `com.mitv.tvhome.mitvplus` | Live TV | Free ad-supported streaming TV channels |
+| 22 | **personalDNSfilter** | `dnsfilter.android` | DNS & Privacy | Local DNS packet filter & hard OTA/telemetry block |
+| 23 | **Screen Saver** | `com.amazon.ftv.screensaver` | Ambient Display | Native Fire OS ambient screen saver |
+| 24 | **Amazon Appstore** | `com.amazon.venezia` | Official Store | Official Amazon app installation & updates |
+| 25 | **DumbTV Home** | `tv.dumbtv.home` | System Launcher | Sole exclusive launcher with 4-chip header |
 
 ---
 
@@ -56,7 +57,7 @@ All installed media, utility, privacy, and streaming applications are accounted 
 
 Every application on the Fire TV Stick is strictly organized in the exact order requested, with Amazon bloat suppressed:
 
-### A. Visible Tiles on Home Screen Grid (Exact Order - 23 Apps):
+### A. Visible Tiles on Home Screen Grid (Exact Order - 24 Apps):
 1. `org.smarttube.stable` (**SmartTube**) - Ad-free YouTube client with SponsorBlock
 2. `in.startv.hotstar` (**JioHotstar**) - Disney+ Hotstar India movies, series & sports
 3. `com.yupptv.firetv` (**YuppTV**) - Live Indian TV channels & entertainment
@@ -71,15 +72,16 @@ Every application on the Fire TV Stick is strictly organized in the exact order 
 12. `io.gh.reisxd.tizentube.cobalt` (**TizenTube Cobalt**) - Native Cobalt-based YouTube client
 13. `com.music.bitchord.tv` (**BitChord TV**) - High-fidelity ad-free music & audio player
 14. `com.fancode.tv` (**FanCode**) - Official Android TV live sports streaming
-15. `org.videolan.vlc` (**VLC Media Player**) - Universal codec video/audio engine
-16. `com.esaba.downloader` (**Downloader**) - Direct web browser & APK downloader
-17. `com.yablio.sendfilestotv` (**Send Files to TV**) - Wi-Fi direct file transfer utility
-18. `visnkmr.apps.filexplorer` (**File Explorer**) - Local and USB filesystem management
-19. `com.valvesoftware.steamlink` (**Steam Link**) - Low-latency PC game streaming to Fire TV
-20. `com.mitv.tvhome.mitvplus` (**Xiaomi TV+**) - Free ad-supported streaming TV channels
-21. `dnsfilter.android` (**personalDNSfilter**) - Local DNS packet filter & hard OTA blocker (placed before screensaver)
-22. `com.amazon.ftv.screensaver` (**Screen Saver**) - Native Fire OS ambient screen saver
-23. `com.amazon.venezia` (**Amazon Appstore**) - Preserved at the very end for official app updates
+15. `com.sportzx.live` (**SportzX**) - Live sports events & television streaming
+16. `org.videolan.vlc` (**VLC Media Player**) - Universal codec video/audio engine
+17. `com.esaba.downloader` (**Downloader**) - Direct web browser & APK downloader
+18. `com.yablio.sendfilestotv` (**Send Files to TV**) - Wi-Fi direct file transfer utility
+19. `visnkmr.apps.filexplorer` (**File Explorer**) - Local and USB filesystem management
+20. `com.valvesoftware.steamlink` (**Steam Link**) - Low-latency PC game streaming to Fire TV
+21. `com.mitv.tvhome.mitvplus` (**Xiaomi TV+**) - Free ad-supported streaming TV channels
+22. `dnsfilter.android` (**personalDNSfilter**) - Local DNS packet filter & hard OTA blocker (placed before screensaver)
+23. `com.amazon.ftv.screensaver` (**Screen Saver**) - Native Fire OS ambient screen saver
+24. `com.amazon.venezia` (**Amazon Appstore**) - Preserved at the very end for official app updates
 
 ### B. Suppressed Bloatware Tiles (`apps.hide`):
 - `com.amazon.ssm` (**System Status Monitor**) — Developer diagnostic HUD hidden from grid.

@@ -479,7 +479,7 @@ To elevate DumbTV Home into a complete TV appliance dashboard, the top-right hea
 Per user instructions, the home screen grid was rearranged into the following exact operational sequence via [home.conf](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/home.conf):
 
 ```properties
-apps.order=org.smarttube.stable,in.startv.hotstar,com.yupptv.firetv,com.vzy.one.firestick,com.stremio.one,com.onemainstream.sonyliv.android,com.viewlift.hoichoiprod,com.zee5.amazon,com.nuvio.tv,com.amazon.firebat,com.discoveryplus.tv.fire,io.gh.reisxd.tizentube.cobalt,com.music.bitchord.tv,com.fancode.tv,org.videolan.vlc,com.esaba.downloader,com.yablio.sendfilestotv,visnkmr.apps.filexplorer,com.valvesoftware.steamlink,com.mitv.tvhome.mitvplus,dnsfilter.android,com.amazon.ftv.screensaver,com.amazon.venezia
+apps.order=org.smarttube.stable,in.startv.hotstar,com.yupptv.firetv,com.vzy.one.firestick,com.stremio.one,com.onemainstream.sonyliv.android,com.viewlift.hoichoiprod,com.zee5.amazon,com.nuvio.tv,com.amazon.firebat,com.discoveryplus.tv.fire,io.gh.reisxd.tizentube.cobalt,com.music.bitchord.tv,com.fancode.tv,com.sportzx.live,org.videolan.vlc,com.esaba.downloader,com.yablio.sendfilestotv,visnkmr.apps.filexplorer,com.valvesoftware.steamlink,com.mitv.tvhome.mitvplus,dnsfilter.android,com.amazon.ftv.screensaver,com.amazon.venezia
 ```
 
 - **Prime Video Integration**: `com.amazon.firebat` was unhidden from `apps.hide` and mapped to #10 in the grid.
