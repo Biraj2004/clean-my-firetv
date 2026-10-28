@@ -99,6 +99,8 @@ def setup_dnsfilter(adb: ADBClient, journal: ActionJournal):
     print("[3/5] Permitting VPN activation and harmonizing DNS routing...")
     adb.shell("cmd appops set dnsfilter.android ACTIVATE_VPN allow")
     adb.shell("settings put global private_dns_mode off")
+    adb.shell("settings put system user_rotation 0")
+    adb.shell("settings put system accelerometer_rotation 0")
     journal.log_action(
         category="dnsfilter",
         target="global:private_dns_mode",
@@ -139,6 +141,7 @@ detectDNS = false
 filterUpdateInterval = 24
 dnsServer = 1.1.1.1, 1.0.0.1
 customDNS = 1.1.1.1, 1.0.0.1
+forceAndroidDisplayMode = landscape
 filterSources = {HAGEZI_AMAZON_TRACKER_URL}
 """
     tmp_conf = os.path.join(tempfile.gettempdir(), "dnsfilter.conf")
