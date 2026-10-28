@@ -2,9 +2,11 @@ name: CI & Code Integrity
 
 on:
   push:
-    branches: [ master, main ]
+    branches: [ master, main, clean-my-firetv ]
+    tags: [ 'v*' ]
   pull_request:
-    branches: [ master, main ]
+    branches: [ master, main, clean-my-firetv ]
+  workflow_dispatch:
 
 jobs:
   validate:
@@ -32,11 +34,65 @@ jobs:
         run: |
           python -c "import core.adb, core.journal, core.lists; print('Core modules validated successfully.')"
 
-      - name: Verify Binary & Config Assets
+      - name: Verify Binary, Config & Asset Integrity
         shell: bash
         run: |
-          test -f dumbtv-enhanced-home.apk || (echo "Missing dumbtv-enhanced-home.apk" && exit 1)
-          test -f home.conf || (echo "Missing home.conf" && exit 1)
-          test -f assets/img1-unsplash.jpg || (echo "Missing wallpaper" && exit 1)
-          echo "All essential binaries and assets are present."
+          python -c "
+          import zipfile, os
 
+          # Verify v1.0.1 release APK
+          apk_path = 'dumbtv-enhanced-home-v1.0.1.apk' if os.path.exists('dumbtv-enhanced-home-v1.0.1.apk') else 'dumbtv-enhanced-home.apk'
+          assert os.path.exists(apk_path), f'Missing APK binary: {apk_path}'
+          with zipfile.ZipFile(apk_path, 'r') as z:
+              files = z.namelist()
+              assert 'AndroidManifest.xml' in files, 'Corrupted APK: missing AndroidManifest.xml'
+              assert 'classes.dex' in files, 'Corrupted APK: missing classes.dex'
+          print(f'Verified APK structure and integrity: {apk_path} ({os.path.getsize(apk_path)} bytes)')
+
+          # Verify configuration file
+          assert os.path.exists('home.conf'), 'Missing home.conf'
+          with open('home.conf', 'r', encoding='utf-8') as f:
+              conf = f.read()
+              assert 'apps.order=' in conf, 'home.conf missing apps.order'
+              assert 'apps.hide=' in conf, 'home.conf missing apps.hide'
+          print('Verified home.conf syntax and entries.')
+
+          # Verify all 8 production assets
+          required_assets = [
+              'assets/screenshot-home-page1.png',
+              'assets/screenshot-home-page2.png',
+              'assets/screenshot-home-page3.png',
+              'assets/screenshot-header-chips.png',
+              'assets/screenshot-wifi-overlay.png',
+              'assets/screenshot-bluetooth-overlay.png',
+              'assets/screenshot-universal-verification.png',
+              'assets/wallpaper-dark-ambient.jpg'
+          ]
+          for asset in required_assets:
+              assert os.path.exists(asset), f'Missing production asset: {asset}'
+              assert os.path.getsize(asset) > 1000, f'Asset file empty or corrupted: {asset}'
+          print(f'Verified all {len(required_assets)} production showcase assets.')
+          "
+
+  release:
+    name: Publish Release Assets
+    needs: validate
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Generate Checksums
+        run: |
+          sha256sum dumbtv-enhanced-home-v1.0.1.apk > checksums.sha256
+          cat checksums.sha256
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dumbtv-enhanced-home-v1.0.1.apk
+            checksums.sha256
+            home.conf
+          generate_release_notes: true
