@@ -28,6 +28,23 @@ AMAZON_OTA_DOMAINS = [
     "unagi.amazon.com",
     "fls-na.amazon.com",
     "aan.amazon.com",
+    # Universal In-App Ad Networks (Unity Ads, AdMob, AppLovin, Wortise)
+    "unityads.unity3d.com",
+    "config.unityads.unity3d.com",
+    "auction.unityads.unity3d.com",
+    "webview.unityads.unity3d.com",
+    "adserver.unityads.unity3d.com",
+    "googleads.g.doubleclick.net",
+    "pagead2.googlesyndication.com",
+    "pubads.g.doubleclick.net",
+    "adservice.google.com",
+    "d.applovin.com",
+    "a.applovin.com",
+    "init.startappservice.com",
+    "config.inmobi.com",
+    "api.wortise.com",
+    "sdk.cas.ai",
+    "ads.vungle.com",
 ]
 
 HAGEZI_AMAZON_TRACKER_URL = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/native.amazon-onlydomains.txt"
