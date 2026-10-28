@@ -1,7 +1,7 @@
 # Active Applications & Running Services Audit
 
 **Device**: Amazon Fire TV Stick (3rd Gen, 2020) — Model `AFTSSS` (Codename: `sheldonp`)  
-**Operating System**: Fire OS 7.7.1.5 (`PS7715/5586`), Android 9 (SDK 28)  
+**Operating System**: Fire OS 7.7.1.7 (`PS7717/5741`), Android 9 (SDK 28)  
 **Exclusive Launcher**: **DumbTV Home (Enhanced 4-Chip Edition)** (`tv.dumbtv.home`)  
 **Audit Timestamp**: October 28, 2026  
 **Memory Headroom**: **~370 MB free** (Surged from ~45 MB stock, ~700% increase)
@@ -12,10 +12,11 @@
 
 This document provides a complete, transparent inventory of every installed application, active home screen tile, and background system service running on your optimized Fire TV Stick. 
 
-- **Single Sole Launcher**: [dumbtv-enhanced-home-v1.0.1.apk](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/dumbtv-enhanced-home-v1.0.1.apk) (`tv.dumbtv.home`) is established as the **only** launcher on the device. All secondary or test launchers (such as Plume Launcher) have been completely decommissioned and uninstalled.
+- **Single Sole Launcher**: [dumbtv-enhanced-home-v1.0.1.apk](https://github.com/Biraj2004/clean-my-firetv/releases/tag/v1.0.1) (`tv.dumbtv.home`) is established as the **only** launcher on the device. All secondary or test launchers (such as Plume Launcher) have been completely decommissioned and uninstalled.
 - **Debloat & Telemetry Elimination**: 51 promotional, telemetry, and background ad packages remain disabled.
 - **Wallpaper Integration**: Single background wallpaper (`assets/wallpaper-dark-ambient.jpg`) rendered with **95% dark dimming overlay** (`dim=95`).
-- **Network Hardening**: Local `personalDNSfilter` packet filter running on `tun0` blackholing Amazon OTA and telemetry domains to `127.0.0.1` with Cloudflare upstream.
+- **Network & Ad Hardening**: Local `personalDNSfilter` packet filter running on `tun0` blackholing Amazon OTA, telemetry, and in-app streaming ad mediation domains (Unity Ads, AppLovin, AdMob, StartApp, InMobi, Wortise) to `127.0.0.1` with Cloudflare upstream.
+- **Display Orientation Stabilization**: Enforced 16:9 landscape mode (`user_rotation = 0`, `accelerometer_rotation = 0`, and `forceAndroidDisplayMode = landscape`) preventing mobile-ported Android APKs from causing portrait rotation distortion.
 
 ---
 

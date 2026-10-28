@@ -120,6 +120,7 @@ Reference repositories and specifications:
    - **TizenTube Cobalt** (`io.gh.reisxd.tizentube.cobalt`): Ad-free leanback YouTube client with live chat.
    - **BitChord TV** (`com.music.bitchord.tv`): YouTube Music on TV with synchronized lyrics.
    - **Nuvio TV** (`com.nuvio.tv`): Leanback live streaming client.
+   - **SportzX TV** (`com.sportzx.live`): Live sports events and television streaming.
    - **VLC for Android TV** (`org.videolan.vlc`): Hardware-accelerated universal codec media player.
    - **personalDNSfilter** (`dnsfilter.android`): Local DNS packet filter & hard Amazon OTA/telemetry blocker.
    - **Downloader by AFTVnews** (`com.esaba.downloader`): Trusted file downloader & installer.
@@ -159,7 +160,7 @@ Reference repositories and specifications:
 4. **Execute & Record**:
    - Run `pm disable-user --user 0 <pkg>` for all target packages present on the device.
    - Apply AppOps `RUN_ANY_IN_BACKGROUND ignore` on OTA and metrics daemons.
-   - Optionally deploy `personalDNSfilter` (`python scripts/dnsfilter.py`) to block Amazon update domains (`softwareupdates.amazon.com`, `fota.amazon.com`, etc.) at the local DNS packet level.
+   - Deploy `personalDNSfilter` (`python scripts/dnsfilter.py`) to sinkhole Amazon update domains (`softwareupdates.amazon.com`, `fota.amazon.com`, etc.) and streaming ad mediation networks (Unity Ads, AppLovin, AdMob, StartApp, InMobi, Wortise) to `127.0.0.1` at the local packet level. Ensure `forceAndroidDisplayMode = landscape` is enforced in `dnsfilter.conf`.
    - Record every forward and reverse command in `logs/journal.jsonl`.
    - Verify disabled status via `pm list packages -d`.
 
@@ -188,9 +189,12 @@ Reference repositories and specifications:
    - **Wi-Fi & Bluetooth Always-On Persistence**:
      `settings put global wifi_on 1`
      `settings put global bluetooth_on 1`
+   - **Forced 16:9 Landscape Orientation**:
+     `settings put system user_rotation 0`
+     `settings put system accelerometer_rotation 0`
 
 2. **Gate Question to User**:
-   - *"I will now configure system-wide Cloudflare DoT encrypted DNS, disable interest-based ads & video auto-play, and boost UI animation speed to 0.5x for instant response. Shall I proceed? (Y/n)"*
+   - *"I will now configure system-wide Cloudflare DoT encrypted DNS, disable interest-based ads & video auto-play, boost UI animation speed to 0.5x, and enforce widescreen landscape orientation. Shall I proceed? (Y/n)"*
 
 3. **Execute & Verify**:
    - Apply all settings via `adb shell settings put ...`.
@@ -212,7 +216,7 @@ Reference repositories and specifications:
    - Push curated `home.conf`:
      - Grid layout with Cyan afterglow focus styling (`accent=cyan`, `tile_style=afterglow`, `tiles=medium`).
      - Ambient background image with 90% dark dimming overlay (`background=image`, `dim=90`).
-     - Ordered application rows (SmartTube #1, Hotstar #2, Stremio #5, etc.).
+     - Ordered application rows (SmartTube #1, Hotstar #2, Stremio #5, FanCode #14, SportzX #15, VLC #16, etc.).
      - 17 Amazon internal services hidden.
    - Push dark ambient wallpaper: `adb push assets/wallpaper-dark-ambient.jpg /sdcard/Android/data/tv.dumbtv.home/files/wallpaper.jpg`
 
@@ -227,7 +231,7 @@ Reference repositories and specifications:
    - Launch DumbTV Home: `adb shell am start -n tv.dumbtv.home/.Home`
 
 5. **Gate Question to User**:
-   - *"DumbTV Home has been deployed with custom dark wallpaper, 23 organized app tiles, and instant 0ms Home button interception. Check your TV screen now. Is DumbTV Home visible with your apps? (Y/n)"*
+   - *"DumbTV Home has been deployed with custom dark wallpaper, 24 organized app tiles, and instant 0ms Home button interception. Check your TV screen now. Is DumbTV Home visible with your apps? (Y/n)"*
 
 ---
 

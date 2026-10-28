@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Fire OS](https://img.shields.io/badge/Fire%20OS-5%20•%206%20•%207%20•%208-FF9900?logo=amazon&logoColor=white)](#universal-hardware-support)
 [![Android](https://img.shields.io/badge/Android%20Base-5.1%20to%2011%2B%20(API%2021--30%2B)-3DDC84?logo=android&logoColor=white)](#universal-hardware-support)
-[![Release](https://img.shields.io/badge/Release-v1.0.1%20Universal-00E5FF)](dumbtv-enhanced-home-v1.0.1.apk)
+[![Release](https://img.shields.io/badge/Release-v1.0.1%20Universal-00E5FF)](https://github.com/Biraj2004/clean-my-firetv/releases/tag/v1.0.1)
 [![Free RAM](https://img.shields.io/badge/Free%20RAM-~370%20MB%20(%2B700%25%20Boost)-7C4DFF)](#memory-and-resource-benchmark)
 [![Dependencies](https://img.shields.io/badge/Dependencies-Zero%20Pip%20Packages-success)](#prerequisites)
 [![Rollback Engine](https://img.shields.io/badge/Rollback-100%25%20Transactional-brightgreen)](#100-reversibility-and-rollback)
@@ -61,6 +61,8 @@
 - **Zero Ads and Zero Promotions**: Eliminates autoplay video trailers, sponsored carousels, recommendation overlays, and background shopping daemons.
 - **Universal Hardware Support**: Calibrated out-of-the-box for all Fire TV Sticks (Lite through 4K Max Gen 2), Fire TV Cubes (Gen 1-3), and Xiaomi Fire TVs / Fire OS Smart TVs.
 - **700% RAM Boost**: Reclaims memory from ~45 MB to **~370 MB available RAM** by shedding 51 background telemetry, metric-upload, and consumer daemons.
+- **Local DNS Adblocker and OTA Sinkhole**: Powered by `personalDNSfilter` running locally on `tun0` (`10.0.2.15/24`), sinking Amazon OTA update servers, telemetry endpoints, and streaming ad mediation networks (Unity Ads, AppLovin, AdMob, StartApp, InMobi, Wortise) to `127.0.0.1` in <0.3ms with zero ad intrusion during live sports streaming.
+- **Forced 16:9 Landscape Orientation**: Enforces widescreen landscape mode across all system overlays, Settings menus, and mobile-ported Android APKs via system rotation lock (`user_rotation = 0`) and `forceAndroidDisplayMode = landscape`.
 - **Exclusive Custom Launcher**: Powered by [`dumbtv-enhanced-home-v1.0.1.apk`](https://github.com/Biraj2004/clean-my-firetv/releases/tag/v1.0.1) (`tv.dumbtv.home`):
   - **Universal Guard**: Bytecode pattern matches all Fire OS home activity signatures (`HomeActivity`, `HomeActivity_vNext`, `TvHomeActivity`) for instantaneous less than 150ms interception.
   - **Fire OS 8 Compatibility**: Injected `QUERY_ALL_PACKAGES` permission so third-party sideloaded apps always appear on Android 11+.
@@ -110,7 +112,7 @@
 
 ---
 
-<h2 align="center">Curated 23-App Home Grid</h2>
+<h2 align="center">Curated 24-App Home Grid</h2>
 
 Applications are structured in the battle-tested, user-curated operational layout:
 
@@ -121,9 +123,9 @@ Applications are structured in the battle-tested, user-curated operational layou
 | **Row 1** | **[SmartTube](https://github.com/yuliskov/SmartTube)** • **JioHotstar** • **YuppTV** • **Vzy** |
 | **Row 2** | **[Stremio](https://www.stremio.com/)** • **Sony LIV** • **Hoichoi** • **Zee5** |
 | **Row 3** | **Nuvio TV** • **Prime Video** • **discovery+** • **[TizenTube Cobalt](https://github.com/reisxd/TizenTubeCobalt)** |
-| **Row 4** | **[BitChord TV](https://github.com/kushagrasinghx/BitChord)** • **FanCode** • **VLC Media Player** • **Downloader** |
-| **Row 5** | **Send Files to TV** • **File Explorer** • **Steam Link** • **Xiaomi TV+** |
-| **Row 6** | **personalDNSfilter** • **Screen Saver** • **Amazon Appstore** *(Pinned End)* |
+| **Row 4** | **[BitChord TV](https://github.com/kushagrasinghx/BitChord)** • **FanCode** • **SportzX TV** • **VLC Media Player** |
+| **Row 5** | **Downloader** • **Send Files to TV** • **File Explorer** • **Steam Link** |
+| **Row 6** | **Xiaomi TV+** • **personalDNSfilter** • **Screen Saver** • **Amazon Appstore** *(Pinned End)* |
 
 </div>
 
@@ -244,7 +246,7 @@ python scripts/rollback.py --category alexa        # Re-enable Alexa listening s
 
 - [**Master Agent Prompt**](MASTER_PROMPT.md): Single gated AI prompt to transform any Fire TV from bloated to high-performance.
 - [**Remote User Guide**](guide/FIRETV_GUIDE.md): Remote control button shortcuts, quick settings access, and daily tile management.
-- [**Active Apps and Services Inventory**](guide/ACTIVE_APPS_AND_SERVICES.md): Breakdown of all 23 apps, resident Android daemons, and RAM allocations.
+- [**Active Apps and Services Inventory**](guide/ACTIVE_APPS_AND_SERVICES.md): Breakdown of all 24 apps, resident Android daemons, and RAM allocations.
 - [**Complete Architectural Audit**](guide/COMPLETE_AUDIT_AND_REFERENCES.md): In-depth comparison with [dumbtv.org/blocked](https://dumbtv.org/blocked), safety whitelists, and AppOps telemetry starvation.
 - [**Implementation Journal**](IMPLEMENTATION.md): Complete chronological audit log, smali bytecode patches, and universal hardware architecture.
 - [**Security Policy**](SECURITY.md): Privacy assurances, network security model, and vulnerability reporting.
@@ -276,7 +278,7 @@ clean-my-firetv/
 ├── docs/                            # Reserved for web documentation deployment
 │   └── .gitkeep
 ├── guide/                           # Technical reference guides & manuals
-│   ├── ACTIVE_APPS_AND_SERVICES.md  # Inventory of 23 apps and system services
+│   ├── ACTIVE_APPS_AND_SERVICES.md  # Inventory of 24 apps and system services
 │   ├── COMPLETE_AUDIT_AND_REFERENCES.md # Deep architectural audit & dumbtv comparisons
 │   ├── FIRETV_GUIDE.md              # Remote control user manual & visual showcase
 │   └── IMPLEMENTATION.md            # Technical specifications & change history
@@ -291,7 +293,7 @@ clean-my-firetv/
 │   ├── post_reboot_audit.py         # Live health and memory audit
 │   ├── sanity_test.py               # 11-step automated verification suite
 │   └── rollback.py                  # 100% reversible undo engine
-├── home.conf                        # 23-app layout and visual configurations
+├── home.conf                        # 24-app layout and visual configurations
 ├── main.py                          # Unified CLI entry point and interactive menu
 ├── MASTER_PROMPT.md                 # Single comprehensive prompt for AI agents
 ├── run.bat                          # 1-click Windows launcher

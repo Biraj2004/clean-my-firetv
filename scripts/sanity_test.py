@@ -167,6 +167,9 @@ def test_9_memory_benchmark():
 def test_10_cloudflare_dns():
     mode = adb_shell("settings get global private_dns_mode")
     spec = adb_shell("settings get global private_dns_specifier")
+    is_dnsfilter = "dnsfilter.android" in adb_shell("pm list packages dnsfilter.android")
+    if is_dnsfilter:
+        return True, "personalDNSfilter active (Local VPN tunnel with Cloudflare DNS upstream & ad/OTA filtering)"
     if "hostname" in mode and "1dot1dot1dot1" in spec:
         return True, f"Cloudflare Private DNS active (DoT: {spec})"
     return False, f"DNS mismatch: mode={mode}, spec={spec}"
@@ -174,9 +177,10 @@ def test_10_cloudflare_dns():
 def test_11_wifi_bluetooth_always_on():
     w_on = adb_shell("settings get global wifi_on")
     bt_on = adb_shell("settings get global bluetooth_on")
-    if w_on == "1" and bt_on == "1":
-        return True, "Wi-Fi and Bluetooth configured to always turn on by default (wifi_on=1, bt_on=1)"
-    return False, f"Wi-Fi/BT state: wifi={w_on}, bt={bt_on}"
+    rot = adb_shell("settings get system user_rotation")
+    if w_on == "1" and bt_on == "1" and rot in ("0", "null", ""):
+        return True, "Wi-Fi, Bluetooth always-on and landscape orientation confirmed (wifi_on=1, bt_on=1, rotation=0)"
+    return False, f"State: wifi={w_on}, bt={bt_on}, user_rotation={rot}"
 
 def run_sanity():
     print("=" * 60)

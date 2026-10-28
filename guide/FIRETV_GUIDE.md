@@ -2,7 +2,7 @@
 
 ## Device Overview
 - **Device Model**: Amazon Fire TV Stick (3rd Gen, 2020) - `AFTSSS` (Codename: `sheldonp`)
-- **Firmware**: Fire OS 7.7.1.5 (`PS7715/5586`) based on Android 9 (API Level 28)
+- **Firmware**: Fire OS 7.7.1.7 (`PS7717/5741`) based on Android 9 (API Level 28)
 - **RAM**: 1 GB (~900 MB usable)
 
 ---
@@ -72,6 +72,10 @@ A full device snapshot was created in `backup/` containing:
 - **24-App Curated Grid**: Ordered from SmartTube, JioHotstar, YuppTV, Vzy, Stremio, Sony LIV, Hoichoi, Zee5, Nuvio, Prime Video, discovery+, TizenTube Cobalt, BitChord TV, FanCode, SportzX (#15), VLC, Downloader, Send Files to TV, File Explorer, Steam Link, Xiaomi TV+, personalDNSfilter (#22), Screen Saver (#23), through Amazon Appstore at the very end (#24).
 - **Dynamic App Lifecycle**: Newly installed apps automatically surface; long-pressing any app tile provides `Move`, `Rename`, `Hide`, and `App info` (for instant uninstall/cache clearing). Unhiding is available in `[ Options ] -> Apps on home screen`.
 - **Airtight Amazon Home Suppression**: Multi-action boot receiver (`BOOT_COMPLETED`, `QUICKBOOT_POWERON`, `LOCKED_BOOT_COMPLETED` at priority 999) + persistent accessibility guard (`tv.dumbtv.home/.Guard`) prevent Amazon stock home from appearing on boot, wake, or app exit.
+
+### 6. In-App Ad Blocking & Landscape Orientation Hardening
+- **Local DNS Ad Mediation Sinkhole**: `personalDNSfilter` runs locally on `tun0` (`10.0.2.15/24`) sinking Amazon OTA endpoints and ad mediation networks (Unity Ads, AppLovin, AdMob, StartApp, InMobi, Wortise) to `127.0.0.1` in <0.3ms. Live sports and video streams play with zero pre-roll or interstitial ads.
+- **Enforced Landscape Display Mode**: System user rotation locked to `0` (`user_rotation = 0`, `accelerometer_rotation = 0`) and `forceAndroidDisplayMode = landscape` configured in `dnsfilter.conf` to guarantee full 16:9 widescreen rendering across all Fire OS settings and sideloaded apps.
 
 ---
 

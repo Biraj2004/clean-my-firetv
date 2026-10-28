@@ -3,7 +3,7 @@
 **Document Version**: 1.0  
 **Audit Date**: October 28, 2026  
 **Target Hardware**: Amazon Fire TV Stick (3rd Gen, 2020) — Model `AFTSSS` (Codename: `sheldonp`)  
-**Operating System**: Fire OS 7.7.1.5 (`PS7715/5586`), Android 9 (SDK 28)  
+**Operating System**: Fire OS 7.7.1.7 (`PS7717/5741`), Android 9 (SDK 28)  
 **Verification Status**: 100% Pass (11/11 Automated Sanity Tests)   
 **Active Services Inventory**: Detailed in [guide/ACTIVE_APPS_AND_SERVICES.md](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/guide/ACTIVE_APPS_AND_SERVICES.md)
 
@@ -27,24 +27,25 @@ Your Fire TV Stick has been transformed from an ad-saturated, memory-choked stre
 4. **Soft OTA Update Block**:
    - Disabled update nag packages (`forcedotaupdater.v2`, `easyupgrade`).
    - Starved background OTA download daemons of background execution (`cmd appops set com.amazon.device.software.ota RUN_ANY_IN_BACKGROUND ignore`).
-5. **Instantaneous Home Interception (<300ms)**:
+5. **Instantaneous Home Interception (<150ms)**:
    - Configured `alarm_manager_constants min_futurity=0` to bypass Amazon's artificial 5-second Home key delay.
    - Bound DumbTV Home's `Guard` accessibility service to ensure instantaneous return to the clean launcher.
 6. **Exclusive Calibrated Launcher Deployed**:
-   - **DumbTV Home (Enhanced 4-Chip Edition)** is established as the sole, exclusive launcher on the device. All other third-party launchers have been completely decommissioned and uninstalled.
-   - 54 KB, 0 network permissions, customized with single wallpaper at 95% dark dim (`dim=95`).
+   - **DumbTV Home (Enhanced 4-Chip Edition v1.0.1)** is established as the sole, exclusive launcher on the device. All other third-party launchers have been completely decommissioned and uninstalled.
+   - 56 KB, 0 network permissions, customized with single wallpaper at 95% dark dim (`dim=95`).
    - Four dedicated header pill buttons: `[ Options ]`, `[ Wi-Fi ]`, `[ Bluetooth ]`, and `[ Settings ]`.
-   - **Stremio** (`com.stremio.one`) pinned as #1 primary app.
-     - Favorite streaming apps ordered (Hotstar, Zee5, Hoichoi, YouTube, VLC, Downloader, Ace Stream Media, MX Player, OTTplay).
-     - 15 bloat and news channels hidden from the grid.
-     - Native HDMI inputs row enabled.
-     - Live memory meter enabled.
+   - **Curated 24-App Grid**: SmartTube, JioHotstar, YuppTV, Vzy, Stremio, Sony LIV, Hoichoi, Zee5, Nuvio, Prime Video, discovery+, TizenTube Cobalt, BitChord TV, FanCode, SportzX TV (#15), VLC, Downloader, Send Files to TV, File Explorer, Steam Link, Xiaomi TV+, personalDNSfilter (#22), Screen Saver (#23), and Amazon Appstore pinned at the end (#24).
+   - 17 bloatware and promotional internal apps hidden from the grid.
+   - Live memory meter and clock enabled.
 7. **Settings Button Issue Diagnosed & Resolved**:
-   - Solved the issue where opening Settings re-activated Amazon's stock home screen by removing Plume's disarming accessibility service and ensuring `tv.dumbtv.home/.Guard` stays authoritative across HUD and settings navigation.
+   - Solved the issue where opening Settings re-activated Amazon's stock home screen by ensuring `tv.dumbtv.home/.Guard` stays authoritative across HUD and settings navigation with an explicit `KEYCODE_SETTINGS` (176) handler.
 8. **RAM Free Headroom**:
-   - Available RAM surged from **~45 MB** before optimization to **~370 MB - 416 MB** after optimization (a **~700% increase** in free memory).
+   - Available RAM surged from **~45 MB** before optimization to **~370 MB** after optimization (a **~700% increase** in free memory).
 9. **Full Rollback Engine**:
    - Every single action logged in [`logs/journal.jsonl`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/logs/journal.jsonl); executable anytime via [`scripts/rollback.py`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/scripts/rollback.py).
+10. **In-App Streaming Ad Blocking & Landscape Orientation Lock**:
+   - Local DNS packet sinkhole (`personalDNSfilter`) routing through `tun0` neutralizes mediation SDKs (Unity Ads, AppLovin, StartApp, AdMob) with zero ads in live sports streaming.
+   - System user rotation permanently locked to `user_rotation = 0` and `forceAndroidDisplayMode = landscape` eliminating display squashing.
 
 ---
 

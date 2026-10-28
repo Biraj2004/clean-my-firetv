@@ -158,6 +158,10 @@ SETTINGS_OPTIMIZATIONS = [
     ("global", "window_animation_scale", "0.5", "1.0", "Window animation scale (snappier)"),
     ("global", "transition_animation_scale", "0.5", "1.0", "Transition animation scale (snappier)"),
     
+    # Display Orientation Lock (Enforce 16:9 Landscape)
+    ("system", "user_rotation", "0", "0", "Lock system display orientation to landscape 0 degrees"),
+    ("system", "accelerometer_rotation", "0", "0", "Disable automatic orientation sensor rotation"),
+    
     # Voice Settings (Since Alexa is disabled)
     ("secure", "voice_disabled", "1", "0", "Disable voice recognition system"),
     ("secure", "alexa_wake_word_disabled", "1", "0", "Disable Alexa wake word"),
