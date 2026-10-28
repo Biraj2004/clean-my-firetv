@@ -1,0 +1,43 @@
+name: CI & Code Integrity
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  validate:
+    name: Validate Python Scripts & Structure
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Check Python Syntax & Compilation
+        run: |
+          python -m py_compile main.py
+          python -m py_compile core/*.py
+          python -m py_compile scripts/*.py
+
+      - name: Verify Core Modules Import
+        run: |
+          python -c "import core.adb, core.journal, core.lists; print('Core modules validated successfully.')"
+
+      - name: Verify Binary & Config Assets
+        shell: bash
+        run: |
+          test -f dumbtv-enhanced-home.apk || (echo "Missing dumbtv-enhanced-home.apk" && exit 1)
+          test -f home.conf || (echo "Missing home.conf" && exit 1)
+          test -f assets/img1-unsplash.jpg || (echo "Missing wallpaper" && exit 1)
+          echo "All essential binaries and assets are present."

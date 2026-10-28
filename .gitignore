@@ -1,0 +1,26 @@
+# Private data & Backups (Contains device serials, MAC, IPs, installed apps)
+backup/
+logs/
+.env
+config.local.json
+*.log
+
+# Temporary research & scratch directories
+*temp_*
+temp_dumbtv/
+temp_cleanyourtv/
+scratch/
+*scratch/
+
+# Downloaded binaries & caches
+build/
+*.apk
+!dumbtv-enhanced-home.apk
+__pycache__/
+*.pyc
+
+# IDE & OS
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini

@@ -1,0 +1,4 @@
+# Clean My Fire TV
+# Requirements & Prerequisites:
+# - Python 3.8+ (Zero third-party pip dependencies required; uses Python standard library)
+# - Android Platform Tools (adb) in PATH or default Android SDK location
