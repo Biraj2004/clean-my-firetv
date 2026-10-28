@@ -8,15 +8,16 @@ import subprocess
 import time
 from core.adb import ADBClient
 
-def main():
+def run_audit(client=None):
     print("=" * 70)
     print("FIRE TV POST-REBOOT COMPREHENSIVE AUDIT & SERVICE ANALYSIS")
     print("=" * 70)
 
-    client = ADBClient()
+    if client is None:
+        client = ADBClient()
     if not client.connect():
         print(f"[-] Error: Unable to connect to Fire TV at {client.device_serial}")
-        sys.exit(1)
+        return False
     
     print("[+] Connected to Fire TV successfully.\n")
 
@@ -258,4 +259,4 @@ def main():
     print("=" * 70)
 
 if __name__ == "__main__":
-    main()
+    run_audit()

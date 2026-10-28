@@ -92,16 +92,40 @@ graph TD
 ## Quick Start
 
 ### 1. Prerequisites
-- Python 3.8+ on host computer.
-- Fire TV connected to local Wi-Fi with **ADB Debugging** enabled (*Settings > My Fire TV > Developer Options > ADB Debugging*).
+- Python 3.8+ on host computer (Windows, macOS, or Linux).
+- Fire TV connected to local Wi-Fi or USB with **ADB Debugging** enabled (*Settings > My Fire TV > Developer Options > ADB Debugging*).
 
 ### 2. Connect & Run Pipeline
-```bash
-# Connect to Fire TV Stick
-adb connect <FIRE_TV_IP>:5555
 
-# Execute complete optimization
+**Windows (1-Click)**:
+Double-click [`run.bat`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/run.bat) or run from terminal:
+```cmd
+run.bat
+```
+
+**macOS / Linux (1-Click)**:
+```bash
+chmod +x run.sh
+./run.sh
+```
+
+**Python CLI (Interactive or Flag Mode)**:
+```bash
+# Interactive Menu
 python main.py
+
+# Non-interactive automated execution
+python main.py --all
+
+# Modular execution flags
+python main.py --launcher    # Install & configure DumbTV Home
+python main.py --debloat     # Strip telemetry & bloatware
+python main.py --optimize    # Apply privacy & performance settings
+python main.py --lockdown    # Starve background OTA daemons
+python main.py --audit       # Live health, RAM & service audit
+python main.py --sanity      # Run automated verification suite
+python main.py --rollback    # Emergency restore all changes
+python main.py --ip <IP>     # Specify target device IP
 ```
 
 ---

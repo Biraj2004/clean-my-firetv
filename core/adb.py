@@ -22,22 +22,28 @@ class ADBClient:
         if os.environ.get("ADB_PATH") and os.path.exists(os.environ["ADB_PATH"]):
             return os.environ["ADB_PATH"]
 
-        # Check standard user LocalAppData path on Windows dynamically
-        local_app_data = os.environ.get("LOCALAPPDATA", "")
-        if local_app_data:
-            candidate = os.path.join(local_app_data, "Android", "Sdk", "platform-tools", "adb.exe")
-            if os.path.exists(candidate):
-                return candidate
-
         # Check PATH
         import shutil
         adb_path = shutil.which("adb")
         if adb_path:
             return adb_path
 
-        # Check common fallback locations on Windows
-        for candidate in [r"C:\adb\adb.exe", r"C:\platform-tools\adb.exe"]:
-            if os.path.exists(candidate):
+        # Check common standard locations on Windows, macOS, Linux
+        local_app_data = os.environ.get("LOCALAPPDATA", "")
+        home = os.path.expanduser("~")
+        candidates = [
+            os.path.join(local_app_data, "Android", "Sdk", "platform-tools", "adb.exe") if local_app_data else "",
+            r"C:\adb\adb.exe",
+            r"C:\platform-tools\adb.exe",
+            os.path.join(home, "Android", "Sdk", "platform-tools", "adb"),
+            os.path.join(home, "Library", "Android", "sdk", "platform-tools", "adb"),
+            "/usr/bin/adb",
+            "/usr/local/bin/adb",
+            "/opt/homebrew/bin/adb",
+        ]
+
+        for candidate in candidates:
+            if candidate and os.path.exists(candidate):
                 return candidate
 
         raise RuntimeError("ADB executable not found. Please install Android Platform Tools or set ADB_PATH.")

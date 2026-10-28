@@ -176,7 +176,7 @@ def test_11_wifi_bluetooth_always_on():
         return True, "Wi-Fi and Bluetooth configured to always turn on by default (wifi_on=1, bt_on=1)"
     return False, f"Wi-Fi/BT state: wifi={w_on}, bt={bt_on}"
 
-def main():
+def run_sanity():
     print("=" * 60)
     print("FIRE TV SANITY & VERIFICATION TEST SUITE")
     print("=" * 60)
@@ -207,6 +207,10 @@ def main():
     
     # Return to DumbTV Home at the end
     adb_shell("am start -n tv.dumbtv.home/.Home")
+    return passed == len(tests)
+
+def main():
+    run_sanity()
 
 if __name__ == "__main__":
     main()
