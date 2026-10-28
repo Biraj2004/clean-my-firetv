@@ -11,6 +11,7 @@ from core.journal import ActionJournal
 DUMBTV_PKG = "tv.dumbtv.home"
 DUMBTV_ACTIVITY = "tv.dumbtv.home/.Home"
 DUMBTV_GUARD = "tv.dumbtv.home/.Guard"
+DUMBTV_RELEASE_URL = "https://github.com/Biraj2004/clean-my-firetv/releases/download/v1.0.1/dumbtv-enhanced-home-v1.0.1.apk"
 
 def run_launcher_setup(adb: ADBClient, journal: ActionJournal, force_install: bool = False):
     print("[*] Starting DumbTV Home setup (sole, exclusive launcher)...")
@@ -41,16 +42,31 @@ def run_launcher_setup(adb: ADBClient, journal: ActionJournal, force_install: bo
             wall_path = cand
             break
 
-    if not apk_path:
-        print("[-] No DumbTV Home APK found in project root.")
-        return
-
-    # 1. Check if already installed before flashing
     is_installed = adb.is_package_installed(DUMBTV_PKG)
     if is_installed and not force_install:
         print(f"[*] Package {DUMBTV_PKG} is already installed and verified on device.")
         print("    Preserving existing installation and skipping re-flash to protect accessibility status.")
     else:
+        # Download from GitHub Releases if not present locally
+        if not apk_path:
+            print("[*] Local APK not found in repo root. Fetching v1.0.1 from GitHub Releases...")
+            import urllib.request, tempfile
+            download_dest = os.path.join(tempfile.gettempdir(), "dumbtv-enhanced-home-v1.0.1.apk")
+            try:
+                req = urllib.request.Request(
+                    DUMBTV_RELEASE_URL,
+                    headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+                )
+                with urllib.request.urlopen(req, timeout=20) as resp, open(download_dest, "wb") as f_out:
+                    f_out.write(resp.read())
+                apk_path = download_dest
+                print(f"[+] Downloaded {os.path.basename(apk_path)} successfully.")
+            except Exception as e:
+                print(f"[-] Could not download release APK: {e}")
+                print(f"    Please manually download dumbtv-enhanced-home-v1.0.1.apk from:")
+                print(f"    https://github.com/Biraj2004/clean-my-firetv/releases")
+                return
+
         print(f"[1/5] Installing {os.path.basename(apk_path)} (Universal v1.0.1 edition)...")
         code, out, err = adb.run(["-s", adb.device_serial, "install", "-r", apk_path])
         if "Success" in out:

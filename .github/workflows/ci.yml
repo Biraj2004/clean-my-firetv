@@ -34,20 +34,11 @@ jobs:
         run: |
           python -c "import core.adb, core.journal, core.lists; print('Core modules validated successfully.')"
 
-      - name: Verify Binary, Config & Asset Integrity
+      - name: Verify Config & Asset Integrity
         shell: bash
         run: |
           python -c "
           import zipfile, os
-
-          # Verify v1.0.1 release APK
-          apk_path = 'dumbtv-enhanced-home-v1.0.1.apk' if os.path.exists('dumbtv-enhanced-home-v1.0.1.apk') else 'dumbtv-enhanced-home.apk'
-          assert os.path.exists(apk_path), f'Missing APK binary: {apk_path}'
-          with zipfile.ZipFile(apk_path, 'r') as z:
-              files = z.namelist()
-              assert 'AndroidManifest.xml' in files, 'Corrupted APK: missing AndroidManifest.xml'
-              assert 'classes.dex' in files, 'Corrupted APK: missing classes.dex'
-          print(f'Verified APK structure and integrity: {apk_path} ({os.path.getsize(apk_path)} bytes)')
 
           # Verify configuration file
           assert os.path.exists('home.conf'), 'Missing home.conf'
@@ -72,6 +63,15 @@ jobs:
               assert os.path.exists(asset), f'Missing production asset: {asset}'
               assert os.path.getsize(asset) > 1000, f'Asset file empty or corrupted: {asset}'
           print(f'Verified all {len(required_assets)} production showcase assets.')
+
+          # Verify APK structure if present in workspace (distributed via GitHub Releases)
+          for cand in ['dumbtv-enhanced-home-v1.0.1.apk', 'dumbtv-enhanced-home.apk']:
+              if os.path.exists(cand):
+                  with zipfile.ZipFile(cand, 'r') as z:
+                      files = z.namelist()
+                      assert 'AndroidManifest.xml' in files, 'Corrupted APK: missing AndroidManifest.xml'
+                      assert 'classes.dex' in files, 'Corrupted APK: missing classes.dex'
+                  print(f'Verified APK structure and integrity: {cand}')
           "
 
   release:
@@ -85,14 +85,17 @@ jobs:
 
       - name: Generate Checksums
         run: |
-          sha256sum dumbtv-enhanced-home-v1.0.1.apk > checksums.sha256
+          sha256sum home.conf > checksums.sha256
+          if [ -f "dumbtv-enhanced-home-v1.0.1.apk" ]; then
+            sha256sum dumbtv-enhanced-home-v1.0.1.apk >> checksums.sha256
+          fi
           cat checksums.sha256
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            dumbtv-enhanced-home-v1.0.1.apk
             checksums.sha256
             home.conf
+            assets/wallpaper-dark-ambient.jpg
           generate_release_notes: true
