@@ -78,16 +78,29 @@ def setup_dnsfilter(adb: ADBClient, journal: ActionJournal):
         except OSError:
             pass
 
-    # 2. Push Custom Filter Configuration & Amazon Blocklist
-    print("[3/4] Configuring Amazon OTA and Telemetry blocklists...")
+    # 2. Configure VPN permission and disable competing DoT private DNS
+    print("[3/5] Permitting VPN activation and harmonizing DNS routing...")
+    adb.shell("cmd appops set dnsfilter.android ACTIVATE_VPN allow")
+    adb.shell("settings put global private_dns_mode off")
+    journal.log_action(
+        category="dnsfilter",
+        target="global:private_dns_mode",
+        forward_cmd="settings put global private_dns_mode off",
+        reverse_cmd="settings put global private_dns_mode hostname",
+        description="Disable native DoT to prevent conflict with local personalDNSfilter VPN"
+    )
+
+    # 3. Push Custom Filter Configuration & Amazon Blocklist
+    print("[4/5] Configuring Amazon OTA and Telemetry blocklists...")
     target_dirs = [
         "/sdcard/Android/data/dnsfilter.android/files",
+        "/sdcard/Android/data/dnsfilter.android/files/PersonalDNSFilter",
         "/sdcard/personalDNSfilter"
     ]
     for d in target_dirs:
         adb.shell(f"mkdir -p {d}")
 
-    # Build local filter.txt
+    # Build local additionalHosts.txt & filter.txt
     blocklist_content = "# DumbTV Amazon OTA & Telemetry Blocklist\n"
     for domain in AMAZON_OTA_DOMAINS:
         blocklist_content += f"{domain}\n"
@@ -98,7 +111,8 @@ def setup_dnsfilter(adb: ADBClient, journal: ActionJournal):
 
     for d in target_dirs:
         adb.run(["-s", adb.device_serial, "push", tmp_filter, f"{d}/filter.txt"])
-    print("    [+] Pushed OTA update domain blocklist (filter.txt).")
+        adb.run(["-s", adb.device_serial, "push", tmp_filter, f"{d}/additionalHosts.txt"])
+    print("    [+] Pushed OTA update domain blocklist to additionalHosts.txt.")
 
     # Build dnsfilter.conf
     conf_content = f"""# personalDNSfilter configuration for Fire TV
@@ -106,6 +120,7 @@ enableFilter = true
 autoStart = true
 detectDNS = false
 filterUpdateInterval = 24
+dnsServer = 1.1.1.1, 1.0.0.1
 customDNS = 1.1.1.1, 1.0.0.1
 filterSources = {HAGEZI_AMAZON_TRACKER_URL}
 """
@@ -115,17 +130,17 @@ filterSources = {HAGEZI_AMAZON_TRACKER_URL}
 
     for d in target_dirs:
         adb.run(["-s", adb.device_serial, "push", tmp_conf, f"{d}/dnsfilter.conf"])
-    print("    [+] Pushed configuration (dnsfilter.conf) with HaGeZi native Amazon tracker list.")
+    print("    [+] Pushed configuration (dnsfilter.conf) with Cloudflare upstream and HaGeZi tracker list.")
 
-    # 3. Clean up temp files
+    # 4. Clean up temp files
     try:
         os.remove(tmp_filter)
         os.remove(tmp_conf)
     except OSError:
         pass
 
-    # 4. Launch personalDNSfilter to initialize
-    print("[4/4] Starting personalDNSfilter background engine...")
+    # 5. Launch personalDNSfilter to initialize
+    print("[5/5] Starting personalDNSfilter background engine...")
     adb.shell(f"am start -n {DNSFILTER_ACTIVITY}")
     time.sleep(2)
 
