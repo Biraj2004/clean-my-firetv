@@ -402,12 +402,12 @@ To elevate DumbTV Home into a complete TV appliance dashboard, the top-right hea
 
 | File Name | Description |
 |---|---|
-| [`assets/dumbtv_home_rearranged_page1.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/dumbtv_home_rearranged_page1.png) | Page 1: SmartTube, Hotstar, YuppTV, Vzy, Stremio, Sony LIV, Hoichoi, Zee5. |
-| [`assets/dumbtv_home_rearranged_page2.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/dumbtv_home_rearranged_page2.png) | Page 2: Nuvio, Prime Video, discovery+, MX Player TV, Cobalt, BitChord, FanCode, VLC. |
-| [`assets/dumbtv_home_rearranged_page3.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/dumbtv_home_rearranged_page3.png) | Page 3: Downloader, Ace Stream Media, Send Files to TV, File Explorer, Steam Link, Xiaomi TV+, Screen Saver, Amazon Appstore. |
-| [`assets/dumbtv_enhanced_header.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/dumbtv_enhanced_header.png) | Close-up of the 4 header buttons: `[ Options ]`, `[ Wi-Fi ]`, `[ Bluetooth ]`, `[ Settings ]`. |
-| [`assets/wifi_chip_clicked.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/wifi_chip_clicked.png) | Direct Fire OS Network page opening from the `[ Wi-Fi ]` button with on/off toggle and SSID list. |
-| [`assets/bluetooth_chip_clicked.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/bluetooth_chip_clicked.png) | Direct Fire OS Remotes & Bluetooth Devices page opening from the `[ Bluetooth ]` button. |
+| [`assets/screenshot-home-page1.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/screenshot-home-page1.png) | Page 1: SmartTube, Hotstar, YuppTV, Vzy, Stremio, Sony LIV, Hoichoi, Zee5. |
+| [`assets/screenshot-home-page2.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/screenshot-home-page2.png) | Page 2: Nuvio, Prime Video, discovery+, MX Player TV, Cobalt, BitChord, FanCode, VLC. |
+| [`assets/screenshot-home-page3.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/screenshot-home-page3.png) | Page 3: Downloader, Ace Stream Media, Send Files to TV, File Explorer, Steam Link, Xiaomi TV+, Screen Saver, Amazon Appstore. |
+| [`assets/screenshot-header-chips.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/screenshot-header-chips.png) | Close-up of the 4 header buttons: `[ Options ]`, `[ Wi-Fi ]`, `[ Bluetooth ]`, `[ Settings ]`. |
+| [`assets/screenshot-wifi-overlay.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/screenshot-wifi-overlay.png) | Direct Fire OS Network page opening from the `[ Wi-Fi ]` button with on/off toggle and SSID list. |
+| [`assets/screenshot-bluetooth-overlay.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/screenshot-bluetooth-overlay.png) | Direct Fire OS Remotes & Bluetooth Devices page opening from the `[ Bluetooth ]` button. |
 
 ---
 

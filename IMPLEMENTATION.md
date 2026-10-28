@@ -465,12 +465,12 @@ To elevate DumbTV Home into a complete TV appliance dashboard, the top-right hea
 
 | File Name | Description |
 |---|---|
-| [`assets/dumbtv_home_rearranged_page1.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/dumbtv_home_rearranged_page1.png) | Showcase Home screen Page 1: 4-chip header, 95% dark dim overlay, RAM meter, SmartTube, Hotstar, YuppTV, Vzy, Stremio, Sony LIV, Hoichoi, Zee5. |
-| [`assets/dumbtv_home_rearranged_page2.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/dumbtv_home_rearranged_page2.png) | Showcase Home screen Page 2: Nuvio, Prime Video, discovery+, MX Player TV, Cobalt, BitChord, FanCode, VLC. |
-| [`assets/dumbtv_home_rearranged_page3.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/dumbtv_home_rearranged_page3.png) | Showcase Home screen Page 3: Downloader, Ace Stream Media, Send Files to TV, File Explorer, Steam Link, Xiaomi TV+, Screen Saver, Amazon Appstore pinned. |
-| [`assets/dumbtv_enhanced_header.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/dumbtv_enhanced_header.png) | Close-up of the 4 header buttons: `[ Options ]`, `[ Wi-Fi ]`, `[ Bluetooth ]`, `[ Settings ]`. |
-| [`assets/wifi_chip_clicked.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/wifi_chip_clicked.png) | Direct Fire OS Network page opening from the `[ Wi-Fi ]` button with on/off toggle and SSID list. |
-| [`assets/bluetooth_chip_clicked.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/bluetooth_chip_clicked.png) | Direct Fire OS Remotes & Bluetooth Devices page opening from the `[ Bluetooth ]` button. |
+| [`assets/screenshot-home-page1.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/screenshot-home-page1.png) | Showcase Home screen Page 1: 4-chip header, 95% dark dim overlay, RAM meter, SmartTube, Hotstar, YuppTV, Vzy, Stremio, Sony LIV, Hoichoi, Zee5. |
+| [`assets/screenshot-home-page2.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/screenshot-home-page2.png) | Showcase Home screen Page 2: Nuvio, Prime Video, discovery+, MX Player TV, Cobalt, BitChord, FanCode, VLC. |
+| [`assets/screenshot-home-page3.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/screenshot-home-page3.png) | Showcase Home screen Page 3: Downloader, Ace Stream Media, Send Files to TV, File Explorer, Steam Link, Xiaomi TV+, Screen Saver, Amazon Appstore pinned. |
+| [`assets/screenshot-header-chips.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/screenshot-header-chips.png) | Close-up of the 4 header buttons: `[ Options ]`, `[ Wi-Fi ]`, `[ Bluetooth ]`, `[ Settings ]`. |
+| [`assets/screenshot-wifi-overlay.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/screenshot-wifi-overlay.png) | Direct Fire OS Network page opening from the `[ Wi-Fi ]` button with on/off toggle and SSID list. |
+| [`assets/screenshot-bluetooth-overlay.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/screenshot-bluetooth-overlay.png) | Direct Fire OS Remotes & Bluetooth Devices page opening from the `[ Bluetooth ]` button. |
 
 ---
 
@@ -516,7 +516,7 @@ To guarantee that Amazon's stock home screen never appears unexpectedly (even up
 
 ## 13. Universal Compatibility & Optimization Architecture (Fire TV Sticks, Cubes, and Xiaomi Fire TVs)
 
-To extend the enhanced DumbTV Home APK (`dumbtv-enhanced-home.apk`) and optimization suite across the broadest spectrum of Amazon Fire TV hardware without breaking any functionality:
+To extend the enhanced DumbTV Home APK (`dumbtv-enhanced-home-v1.0.1.apk`) and optimization suite across the broadest spectrum of Amazon Fire TV hardware without breaking any functionality:
 
 ### 13.1 Target Device Ecosystem Supported
 1. **Fire TV Stick Family**:
@@ -539,7 +539,7 @@ To extend the enhanced DumbTV Home APK (`dumbtv-enhanced-home.apk`) and optimiza
 
 ---
 
-### 13.2 Core Architectural Enhancements in `dumbtv-enhanced-home.apk`
+### 13.2 Core Architectural Enhancements in `dumbtv-enhanced-home-v1.0.1.apk`
 
 1. **Fire OS 8 Package Visibility Fix (`QUERY_ALL_PACKAGES`)**:
    - Android 11 (Fire OS 8 / API 30+) restricts inter-package visibility by default. Without explicit declarations, custom launchers cannot enumerate newly sideloaded or downloaded streaming applications.

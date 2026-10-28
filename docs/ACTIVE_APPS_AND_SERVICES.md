@@ -12,9 +12,9 @@
 
 This document provides a complete, transparent inventory of every installed application, active home screen tile, and background system service running on your optimized Fire TV Stick. 
 
-- **Single Sole Launcher**: [dumbtv-enhanced-home.apk](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/dumbtv-enhanced-home.apk) (`tv.dumbtv.home`) is established as the **only** launcher on the device. All secondary or test launchers (such as Plume Launcher) have been completely decommissioned and uninstalled.
+- **Single Sole Launcher**: [dumbtv-enhanced-home-v1.0.1.apk](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/dumbtv-enhanced-home-v1.0.1.apk) (`tv.dumbtv.home`) is established as the **only** launcher on the device. All secondary or test launchers (such as Plume Launcher) have been completely decommissioned and uninstalled.
 - **Debloat & Telemetry Elimination**: 51 promotional, telemetry, and background ad packages remain disabled.
-- **Wallpaper Integration**: Single background wallpaper (`assets/img1-unsplash.jpg`) rendered with **95% dark dimming overlay** (`dim=95`).
+- **Wallpaper Integration**: Single background wallpaper (`assets/wallpaper-dark-ambient.jpg`) rendered with **95% dark dimming overlay** (`dim=95`).
 - **Network Hardening**: Native Cloudflare DNS-over-TLS (DoT) active (`1dot1dot1dot1.cloudflare-dns.com`).
 
 ---

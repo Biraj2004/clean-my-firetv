@@ -465,12 +465,12 @@ To elevate DumbTV Home into a complete TV appliance dashboard, the top-right hea
 
 | File Name | Description |
 |---|---|
-| [`assets/dumbtv_home_rearranged_page1.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/dumbtv_home_rearranged_page1.png) | Showcase Home screen Page 1: 4-chip header, 95% dark dim overlay, RAM meter, SmartTube, Hotstar, YuppTV, Vzy, Stremio, Sony LIV, Hoichoi, Zee5. |
-| [`assets/dumbtv_home_rearranged_page2.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/dumbtv_home_rearranged_page2.png) | Showcase Home screen Page 2: Nuvio, Prime Video, discovery+, MX Player TV, Cobalt, BitChord, FanCode, VLC. |
-| [`assets/dumbtv_home_rearranged_page3.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/dumbtv_home_rearranged_page3.png) | Showcase Home screen Page 3: Downloader, Ace Stream Media, Send Files to TV, File Explorer, Steam Link, Xiaomi TV+, Screen Saver, Amazon Appstore pinned. |
-| [`assets/dumbtv_enhanced_header.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/dumbtv_enhanced_header.png) | Close-up of the 4 header buttons: `[ Options ]`, `[ Wi-Fi ]`, `[ Bluetooth ]`, `[ Settings ]`. |
-| [`assets/wifi_chip_clicked.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/wifi_chip_clicked.png) | Direct Fire OS Network page opening from the `[ Wi-Fi ]` button with on/off toggle and SSID list. |
-| [`assets/bluetooth_chip_clicked.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/bluetooth_chip_clicked.png) | Direct Fire OS Remotes & Bluetooth Devices page opening from the `[ Bluetooth ]` button. |
+| [`assets/screenshot-home-page1.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/screenshot-home-page1.png) | Showcase Home screen Page 1: 4-chip header, 95% dark dim overlay, RAM meter, SmartTube, Hotstar, YuppTV, Vzy, Stremio, Sony LIV, Hoichoi, Zee5. |
+| [`assets/screenshot-home-page2.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/screenshot-home-page2.png) | Showcase Home screen Page 2: Nuvio, Prime Video, discovery+, MX Player TV, Cobalt, BitChord, FanCode, VLC. |
+| [`assets/screenshot-home-page3.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/screenshot-home-page3.png) | Showcase Home screen Page 3: Downloader, Ace Stream Media, Send Files to TV, File Explorer, Steam Link, Xiaomi TV+, Screen Saver, Amazon Appstore pinned. |
+| [`assets/screenshot-header-chips.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/screenshot-header-chips.png) | Close-up of the 4 header buttons: `[ Options ]`, `[ Wi-Fi ]`, `[ Bluetooth ]`, `[ Settings ]`. |
+| [`assets/screenshot-wifi-overlay.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/screenshot-wifi-overlay.png) | Direct Fire OS Network page opening from the `[ Wi-Fi ]` button with on/off toggle and SSID list. |
+| [`assets/screenshot-bluetooth-overlay.png`](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/assets/screenshot-bluetooth-overlay.png) | Direct Fire OS Remotes & Bluetooth Devices page opening from the `[ Bluetooth ]` button. |
 
 ---
 
@@ -510,3 +510,57 @@ To guarantee that Amazon's stock home screen never appears unexpectedly (even up
 3. **Unhiding Applications**: Clicking the top `[ Options ]` pill > **"Apps on home screen"** opens a full multi-choice checklist with checkboxes for every installed app, allowing instant restoration of any hidden package.
 
 
+
+
+---
+
+## 13. Universal Compatibility & Optimization Architecture (Fire TV Sticks, Cubes, and Xiaomi Fire TVs)
+
+To extend the enhanced DumbTV Home APK (`dumbtv-enhanced-home-v1.0.1.apk`) and optimization suite across the broadest spectrum of Amazon Fire TV hardware without breaking any functionality:
+
+### 13.1 Target Device Ecosystem Supported
+1. **Fire TV Stick Family**:
+   - Fire TV Stick Lite (`karat`, Fire OS 7 / Android 9)
+   - Fire TV Stick 2nd Gen / Basic Edition (`tank`, Fire OS 5 / Android 5.1)
+   - Fire TV Stick 3rd Gen (`sheldonp`, Fire OS 7 / Android 9)
+   - Fire TV Stick 4K 1st Gen (`mantis`, Fire OS 6 / Android 7.1)
+   - Fire TV Stick 4K Max 1st Gen (`kara`, Fire OS 7 / Android 9)
+   - Fire TV Stick 4K 2nd Gen (`cinelli`, Fire OS 8 / Android 11)
+   - Fire TV Stick 4K Max 2nd Gen (`karnak`, Fire OS 8 / Android 11)
+2. **Fire TV Cube Family**:
+   - Fire TV Cube 1st Gen (`raven`, Fire OS 6 / Android 7.1)
+   - Fire TV Cube 2nd Gen (`gazelle`, Fire OS 7 / Android 9)
+   - Fire TV Cube 3rd Gen (`scudo`, Fire OS 8 / Android 11)
+3. **Xiaomi Fire TVs & Fire TV Smart TVs**:
+   - Xiaomi Smart TV F2 Fire TV Series (43", 50", 55")
+   - Redmi Smart TV Fire TV Series (32", 43")
+   - Amazon Fire TV Omni / Omni QLED / 4-Series / 2-Series
+   - Insignia & Toshiba Fire TV Edition Smart TVs
+
+---
+
+### 13.2 Core Architectural Enhancements in `dumbtv-enhanced-home-v1.0.1.apk`
+
+1. **Fire OS 8 Package Visibility Fix (`QUERY_ALL_PACKAGES`)**:
+   - Android 11 (Fire OS 8 / API 30+) restricts inter-package visibility by default. Without explicit declarations, custom launchers cannot enumerate newly sideloaded or downloaded streaming applications.
+   - Injected `<uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>` and declared hardware features (`live_tv`, `wifi`, `bluetooth`) as `required="false"` to prevent installer rejections on hardware-divergent devices.
+
+2. **Broadened Universal HomeActivity Interception (`Guard.smali`)**:
+   - Upstream DumbTV hardcoded a strict equality check against `com.amazon.tv.launcher.ui.HomeActivity_vNext`.
+   - On Fire OS 5/6 and diverse Fire TV Smart TV builds, the home activity resolves to `HomeActivity` or `TvHomeActivity`.
+   - Refactored bytecode to inspect `CharSequence.toString().contains("HomeActivity")` within the `com.amazon.tv.launcher` namespace, guaranteeing instantaneous <150ms interception across every Fire OS generation.
+
+3. **Dedicated Remote Settings Key Handler (`Home.smali`)**:
+   - Fire TV Voice Remote Pro, Xiaomi Fire TV remotes, and Fire TV Cube remotes include a physical hardware Settings button (`KEYCODE_SETTINGS` / Keycode 176 / `0xb0`).
+   - Implemented an explicit key handler inside `Home.onKeyDown()` to invoke `openSettings()`, delivering instantaneous access to the Fire OS HUD/settings without risking stock home exposure.
+
+4. **3-Tier Fault-Tolerant Settings Navigation (`WifiClickListener` & `BtClickListener`)**:
+   - Network and Bluetooth header chips execute a 3-tier fallback strategy:
+     1. Modern Fire OS Settings (`com.amazon.tv.settings.v2`)
+     2. Legacy Fire OS Settings (`com.amazon.tv.settings`)
+     3. Standard Android Settings Intents (`android.settings.WIFI_SETTINGS` / `android.settings.BLUETOOTH_SETTINGS`)
+   - Guarantees zero crashing on older or custom OEM builds.
+
+5. **Hardware TV Input Passthrough for Smart TVs (`Input.smali` & Whitelist Safety)**:
+   - On Smart TVs (such as the Xiaomi F2 Series), hardware HDMI ports (HDMI 1, HDMI 2, HDMI 3/eARC) and live antenna TV are managed via `android.media.tv.TvInputManager` and `com.amazon.tv.livetv`.
+   - The optimization engine places `com.amazon.tv.livetv` and `com.amazon.mediatek.livetv` in the immutable `NEVER_DISABLE` whitelist, ensuring physical input switching remains 100% operational in DumbTV Home's native Inputs bar.
