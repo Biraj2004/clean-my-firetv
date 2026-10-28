@@ -25,3 +25,4 @@ What happened instead of the expected result.
 ```
 Paste relevant output from terminal or journal.jsonl here
 ```
+

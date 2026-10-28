@@ -12,3 +12,4 @@ else
 fi
 
 "$PY_BIN" main.py "$@"
+

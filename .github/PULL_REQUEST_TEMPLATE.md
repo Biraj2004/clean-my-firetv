@@ -12,3 +12,4 @@ Briefly describe the changes introduced by this pull request.
 - [ ] No personal tokens, IP addresses, serials, or private backups committed.
 - [ ] Tested with `python scripts/sanity_test.py` or verified on hardware.
 - [ ] Documentation updated if introducing new CLI flags or features.
+
