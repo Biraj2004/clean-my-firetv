@@ -74,10 +74,12 @@ def test_3_stremio_home():
         return False, f"Failed to start Stremio: resumed {act1}"
     
     adb_shell("input keyevent 3")  # KEYCODE_HOME
-    time.sleep(1.2)
-    act2 = get_resumed_activity()
-    if "tv.dumbtv.home/.Home" in act2:
-        return True, f"Stremio -> Home intercepted perfectly in DumbTV Home ({act2})"
+    act2 = ""
+    for _ in range(4):
+        time.sleep(0.5)
+        act2 = get_resumed_activity()
+        if "tv.dumbtv.home/.Home" in act2:
+            return True, f"Stremio -> Home intercepted perfectly in DumbTV Home ({act2})"
     return False, f"Expected DumbTV Home, got {act2}"
 
 def test_4_smarttube_home():
