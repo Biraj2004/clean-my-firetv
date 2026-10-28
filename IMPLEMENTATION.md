@@ -6,7 +6,7 @@
 **Firmware Version**: Fire OS 7.7.1.5 (`PS7715/5586`) / Android 9 (SDK 28)  
 **Status**: Successfully Executed, Tested & Verified   
 
-> Detailed technical documentation and audit matrices can be viewed in [docs/IMPLEMENTATION.md](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/docs/IMPLEMENTATION.md) and [guide/FIRETV_GUIDE.md](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/guide/FIRETV_GUIDE.md).
+> Detailed technical documentation and audit matrices can be viewed in [guide/IMPLEMENTATION.md](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/guide/IMPLEMENTATION.md) and [guide/FIRETV_GUIDE.md](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/guide/FIRETV_GUIDE.md).
 
 ---
 

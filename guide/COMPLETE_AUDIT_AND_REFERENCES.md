@@ -5,7 +5,7 @@
 **Target Hardware**: Amazon Fire TV Stick (3rd Gen, 2020) — Model `AFTSSS` (Codename: `sheldonp`)  
 **Operating System**: Fire OS 7.7.1.5 (`PS7715/5586`), Android 9 (SDK 28)  
 **Verification Status**: 100% Pass (11/11 Automated Sanity Tests)   
-**Active Services Inventory**: Detailed in [docs/ACTIVE_APPS_AND_SERVICES.md](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/docs/ACTIVE_APPS_AND_SERVICES.md)
+**Active Services Inventory**: Detailed in [guide/ACTIVE_APPS_AND_SERVICES.md](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/guide/ACTIVE_APPS_AND_SERVICES.md)
 
 ---
 

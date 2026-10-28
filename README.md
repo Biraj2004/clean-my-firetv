@@ -22,8 +22,8 @@
   <a href="#quick-start-and-execution-guide"><b>Execution Guide</b></a> •
   <a href="guide/FIRETV_GUIDE.md"><b>Remote User Guide</b></a> •
   <a href="IMPLEMENTATION.md"><b>Implementation Log</b></a> •
-  <a href="docs/ACTIVE_APPS_AND_SERVICES.md"><b>Services Inventory</b></a> •
-  <a href="docs/COMPLETE_AUDIT_AND_REFERENCES.md"><b>Architectural Audit</b></a> •
+  <a href="guide/ACTIVE_APPS_AND_SERVICES.md"><b>Services Inventory</b></a> •
+  <a href="guide/COMPLETE_AUDIT_AND_REFERENCES.md"><b>Architectural Audit</b></a> •
   <a href="SECURITY.md"><b>Security Policy</b></a>
 </p>
 
@@ -170,10 +170,11 @@ python main.py
 python main.py --all
 
 # Modular execution flags
-python main.py --launcher    # Deploy and calibrate DumbTV Home v1.0.1
+python main.py --launcher    # Deploy DumbTV Home v1.0.1 (auto-fetches release APK)
 python main.py --debloat     # Strip telemetry, ads and Alexa listening daemons
 python main.py --optimize    # Apply Cloudflare DoT DNS and 0.5x snappy animations
 python main.py --lockdown    # Starve background OTA update daemons
+python main.py --dnsfilter   # Deploy personalDNSfilter local ad and OTA blocking engine
 python main.py --backup      # Generate pre-clean state snapshot
 python main.py --audit       # Run live post-clean health, RAM and service audit
 python main.py --sanity      # Run 11-step automated verification suite
@@ -221,8 +222,8 @@ python scripts/rollback.py --category alexa        # Re-enable Alexa listening s
 
 - [**Master Agent Prompt**](MASTER_PROMPT.md): Single gated AI prompt to transform any Fire TV from bloated to high-performance.
 - [**Remote User Guide**](guide/FIRETV_GUIDE.md): Remote control button shortcuts, quick settings access, and daily tile management.
-- [**Active Apps and Services Inventory**](docs/ACTIVE_APPS_AND_SERVICES.md): Breakdown of all 24 apps, resident Android daemons, and RAM allocations.
-- [**Complete Architectural Audit**](docs/COMPLETE_AUDIT_AND_REFERENCES.md): In-depth comparison with [dumbtv.org/blocked](https://dumbtv.org/blocked), safety whitelists, and AppOps telemetry starvation.
+- [**Active Apps and Services Inventory**](guide/ACTIVE_APPS_AND_SERVICES.md): Breakdown of all 24 apps, resident Android daemons, and RAM allocations.
+- [**Complete Architectural Audit**](guide/COMPLETE_AUDIT_AND_REFERENCES.md): In-depth comparison with [dumbtv.org/blocked](https://dumbtv.org/blocked), safety whitelists, and AppOps telemetry starvation.
 - [**Implementation Journal**](IMPLEMENTATION.md): Complete chronological audit log, smali bytecode patches, and universal hardware architecture.
 - [**Security Policy**](SECURITY.md): Privacy assurances, network security model, and vulnerability reporting.
 - [**License**](LICENSE): Standard open-source MIT License.
@@ -250,24 +251,24 @@ clean-my-firetv/
 │   ├── adb.py                       # Universal ADB client (Auto-discovery, USB/Wi-Fi)
 │   ├── journal.py                   # Transactional forward/reverse action logger
 │   └── lists.py                     # Safe debloat lists and NEVER_DISABLE whitelists
-├── docs/                            # Deep technical reference manuals
-│   ├── ACTIVE_APPS_AND_SERVICES.md
-│   ├── COMPLETE_AUDIT_AND_REFERENCES.md
-│   └── IMPLEMENTATION.md
-├── guide/
-│   └── FIRETV_GUIDE.md              # Remote control user manual
+├── docs/                            # Reserved for web documentation deployment
+│   └── .gitkeep
+├── guide/                           # Technical reference guides & manuals
+│   ├── ACTIVE_APPS_AND_SERVICES.md  # Inventory of 24 apps and system services
+│   ├── COMPLETE_AUDIT_AND_REFERENCES.md # Deep architectural audit & dumbtv comparisons
+│   ├── FIRETV_GUIDE.md              # Remote control user manual & visual showcase
+│   └── IMPLEMENTATION.md            # Technical specifications & change history
 ├── scripts/                         # Phase-specific execution scripts
 │   ├── backup.py                    # Pre-clean state snapshots
 │   ├── debloat.py                   # Safe debloat engine
 │   ├── optimize.py                  # Settings and privacy tuning
 │   ├── lockdown.py                  # Soft OTA block and AppOps starvation
-│   ├── launcher.py                  # DumbTV Home v1.0.1 deployment
+│   ├── dnsfilter.py                 # personalDNSfilter deployment & hard OTA/telemetry block
+│   ├── launcher.py                  # DumbTV Home v1.0.1 deployment (auto-fetches release APK)
 │   ├── inspect_services.py          # Android service records analyzer
 │   ├── post_reboot_audit.py         # Live health and memory audit
 │   ├── sanity_test.py               # 11-step automated verification suite
 │   └── rollback.py                  # 100% reversible undo engine
-├── dumbtv-enhanced-home-v1.0.1.apk  # Universal release binary v1.0.1 (57.9 KB)
-├── dumbtv-enhanced-home.apk         # Backward-compatible alias binary
 ├── home.conf                        # 24-app layout and visual configurations
 ├── main.py                          # Unified CLI entry point and interactive menu
 ├── MASTER_PROMPT.md                 # Single comprehensive prompt for AI agents
