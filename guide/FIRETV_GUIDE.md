@@ -1,9 +1,38 @@
 # Fire TV Optimization & Stremio Setup Guide
 
 ## Device Overview
-- **Device Model**: Amazon Fire TV Stick (3rd Gen, 2020) — `AFTSSS` (Codename: `sheldonp`)
+- **Device Model**: Amazon Fire TV Stick (3rd Gen, 2020) - `AFTSSS` (Codename: `sheldonp`)
 - **Firmware**: Fire OS 7.7.1.5 (`PS7715/5586`) based on Android 9 (API Level 28)
 - **RAM**: 1 GB (~900 MB usable)
+
+---
+
+## Visual Showcase
+
+<div align="center">
+
+### Home Screen Interface (Page 1)
+<img src="../assets/screenshot-home-page1.png" alt="DumbTV Home Clean Grid" width="750" />
+<br>
+<em>DumbTV Home v1.0.1 running on Fire TV Stick: Pure black theme, live memory meter, 4 quick header buttons, zero advertisements.</em>
+
+<br><br>
+
+### 4-Chip Direct System Navigation
+<img src="../assets/screenshot-header-chips.png" alt="DumbTV Header Navigation Chips" width="600" />
+<br>
+<em>Direct header chips: Options, Wi-Fi, Bluetooth, and Settings.</em>
+
+<br><br>
+
+### Native Wi-Fi & Bluetooth Overlays
+<img src="../assets/screenshot-wifi-overlay.png" alt="Wi-Fi Settings Overlay" width="450" />
+&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="../assets/screenshot-bluetooth-overlay.png" alt="Bluetooth Settings Overlay" width="450" />
+<br>
+<em>Left: Direct network selection and Wi-Fi toggle. Right: Direct Bluetooth and remote pairing management.</em>
+
+</div>
 
 ---
 
@@ -35,7 +64,7 @@ A full device snapshot was created in `backup/` containing:
 - `alarm_manager_constants min_futurity=0` configured to eliminate the artificial 5-second Home key delay.
 
 ### 5. Launchers & Custom Grid Setup
-- **DumbTV Home (Enhanced 4-Chip Edition)**: Configured as the exclusive launcher. Featuring a custom forest wallpaper with a 95% dark overlay (`dim=95`), real-time memory monitor, and 4 dedicated navigation chips:
+- **DumbTV Home (Enhanced 4-Chip Edition v1.0.1)**: Configured as the exclusive launcher (`dumbtv-enhanced-home-v1.0.1.apk`). Featuring ambient dark wallpaper (`assets/wallpaper-dark-ambient.jpg`) with a 95% dark overlay (`dim=95`), real-time memory monitor, and 4 dedicated navigation chips:
   - `[ Options ]`: App visibility and display options.
   - `[ Wi-Fi ]`: Direct network connectivity toggle and SSID selection.
   - `[ Bluetooth ]`: Direct Bluetooth device and controller pairing.

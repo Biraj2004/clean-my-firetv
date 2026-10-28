@@ -198,11 +198,13 @@ Reference repositories and specifications:
 ---
 
 ### GATE 6: Deploy Universal DumbTV Enhanced Home Launcher
-**Goal**: Install and calibrate `dumbtv-enhanced-home.apk` as the exclusive home screen with zero promotional ads, live memory meter, 4-chip navigation, and 0ms instant HOME key takeover.
+**Goal**: Install and calibrate `dumbtv-enhanced-home-v1.0.1.apk` as the exclusive home screen with zero promotional ads, live memory meter, 4-chip navigation, and 0ms instant HOME key takeover.
 
-1. **Deploy Universal Binary**:
-   - Install `dumbtv-enhanced-home.apk` (built with `QUERY_ALL_PACKAGES`, `minSdkVersion: 21`, broadened `contains("HomeActivity")` guard, and remote `KEYCODE_SETTINGS` handler).
-   - Command: `adb install -r dumbtv-enhanced-home.apk`
+1. **Deploy Universal Binary (v1.0.1)**:
+   - Check if `tv.dumbtv.home` is already installed: `adb shell pm path tv.dumbtv.home`.
+   - **Important**: If already installed and functional, **skip re-installation** to preserve active accessibility service permissions.
+   - If not installed (or if explicitly updating), install `dumbtv-enhanced-home-v1.0.1.apk` (built with `QUERY_ALL_PACKAGES`, `minSdkVersion: 21`, broadened `contains("HomeActivity")` guard, and remote `KEYCODE_SETTINGS` handler):
+     `adb install -r dumbtv-enhanced-home-v1.0.1.apk`
 
 2. **Push Configuration & Ambient Wallpaper**:
    - Ensure target directory exists: `adb shell mkdir -p /sdcard/Android/data/tv.dumbtv.home/files`
@@ -211,7 +213,7 @@ Reference repositories and specifications:
      - Ambient background image with 90% dark dimming overlay (`background=image`, `dim=90`).
      - Ordered application rows (SmartTube #1, Hotstar #2, Stremio #5, etc.).
      - 17 Amazon internal services hidden.
-   - Push dark ambient wallpaper: `adb push assets/img1-unsplash.jpg /sdcard/Android/data/tv.dumbtv.home/files/wallpaper.jpg`
+   - Push dark ambient wallpaper: `adb push assets/wallpaper-dark-ambient.jpg /sdcard/Android/data/tv.dumbtv.home/files/wallpaper.jpg`
 
 3. **Zero-Lag Home Key Takeover**:
    - Eliminate Amazon's artificial 5-second app switch delay:
@@ -255,3 +257,4 @@ Reference repositories and specifications:
    - Remind the user that the setup is 100% reversible anytime using:
      `python scripts/rollback.py --all`
 ```
+
