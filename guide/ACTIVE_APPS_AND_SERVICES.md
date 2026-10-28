@@ -21,33 +21,33 @@ This document provides a complete, transparent inventory of every installed appl
 
 ## 2. Complete Inventory of Installed User Applications
 
-All installed media, utility, and streaming applications are accounted for and optimized:
+All installed media, utility, privacy, and streaming applications are accounted for and optimized:
 
 | # | Application Name | Package Name | Category | Primary Function |
 |---|---|---|---|---|
-| 1 | **Stremio** | `com.stremio.one` | Core Media Center | Primary media player & catalog (Pinned #1) |
-| 2 | **SmartTube** | `org.smarttube.stable` | Video Streaming | Ad-free YouTube client with SponsorBlock |
-| 3 | **TizenTube Cobalt** | `io.gh.reisxd.tizentube.cobalt` | Video Streaming | Native Cobalt-based YouTube client (v2.0.3) |
-| 4 | **BitChord TV** | `com.music.bitchord.tv` | Music & Audio | High-fidelity ad-free music & audio player |
-| 5 | **Nuvio TV** | `com.nuvio.tv` | Streaming Client | Modern open media streaming client |
+| 1 | **SmartTube** | `org.smarttube.stable` | Video Streaming | Ad-free YouTube client with SponsorBlock |
+| 2 | **JioHotstar** | `in.startv.hotstar` | Regional OTT | Disney+ Hotstar India movies, series & sports |
+| 3 | **YuppTV** | `com.yupptv.firetv` | Live TV / Regional | Live Indian TV channels & entertainment |
+| 4 | **VZY** | `com.vzy.one.firestick` | Streaming | Fire TV media streaming player |
+| 5 | **Stremio** | `com.stremio.one` | Core Media Center | Primary media aggregator & catalog |
 | 6 | **Sony LIV** | `com.onemainstream.sonyliv.android` | Regional OTT | Official Fire TV India live TV & sports client |
-| 7 | **FanCode** | `com.fancode.tv` | Live Sports | Official Android TV live sports streaming |
-| 8 | **YuppTV** | `com.yupptv.firetv` | Live TV / Regional | Live Indian TV channels & entertainment |
-| 9 | **VZY** | `com.vzy.one.firestick` | Streaming | Fire TV media streaming player |
-| 10 | **MX Player TV** | `com.mxtech.videoplayer.television` | Video Player / OTT | Hardware-accelerated local/network player |
-| 11 | **JioHotstar** | `in.startv.hotstar` | Regional OTT | Disney+ Hotstar India movies, series & cricket |
-| 12 | **Zee5** | `com.zee5.amazon` | Regional OTT | Indian originals, movies, and broadcast shows |
-| 13 | **Hoichoi** | `com.viewlift.hoichoiprod` | Regional OTT | Bengali regional entertainment platform |
-| 14 | **VLC Media Player** | `org.videolan.vlc` | Utility Media Player | Universal codec video/audio playback engine |
-| 15 | **Downloader** | `com.esaba.downloader` | System Utility | Direct web browser & APK downloader |
-| 16 | **Ace Stream Media** | `org.acestream.media.atv` | P2P Streaming Engine | P2P multimedia streaming and casting engine |
+| 7 | **Hoichoi** | `com.viewlift.hoichoiprod` | Regional OTT | Bengali regional entertainment platform |
+| 8 | **Zee5** | `com.zee5.amazon` | Regional OTT | Indian originals, movies, and broadcast shows |
+| 9 | **Nuvio TV** | `com.nuvio.tv` | Streaming Client | Modern open media streaming client |
+| 10 | **Prime Video** | `com.amazon.firebat` | Official OTT | Amazon Prime Video streaming catalog |
+| 11 | **discovery+** | `com.discoveryplus.tv.fire` | Documentaries | Discovery Channel documentaries & science |
+| 12 | **TizenTube Cobalt** | `io.gh.reisxd.tizentube.cobalt` | Video Streaming | Native Cobalt-based YouTube client (v2.0.3) |
+| 13 | **BitChord TV** | `com.music.bitchord.tv` | Music & Audio | High-fidelity ad-free music & audio player |
+| 14 | **FanCode** | `com.fancode.tv` | Live Sports | Official Android TV live sports streaming |
+| 15 | **VLC Media Player** | `org.videolan.vlc` | Utility Media Player | Universal codec video/audio playback engine |
+| 16 | **Downloader** | `com.esaba.downloader` | System Utility | Direct web browser & APK downloader |
 | 17 | **Send Files to TV** | `com.yablio.sendfilestotv` | File Transfer | Local Wi-Fi direct file transfer utility |
 | 18 | **File Explorer** | `visnkmr.apps.filexplorer` | File Manager | Local and USB filesystem management |
-| 19 | **discovery+** | `com.discoveryplus.tv.fire` | Documentaries | Discovery Channel documentaries & science |
-| 20 | **Steam Link** | `com.valvesoftware.steamlink` | Gaming & Display | Low-latency PC game streaming to Fire TV |
-| 21 | **Xiaomi TV+** | `com.mitv.tvhome.mitvplus` | Live TV | Free ad-supported streaming TV channels |
-| 22 | **Amazon Appstore** | `com.amazon.venezia` | Official Store | Official Amazon app installation & updates |
-| 23 | **Screen Saver** | `com.amazon.ftv.screensaver` | Ambient Display | Native Fire OS ambient screen saver |
+| 19 | **Steam Link** | `com.valvesoftware.steamlink` | Gaming & Display | Low-latency PC game streaming to Fire TV |
+| 20 | **Xiaomi TV+** | `com.mitv.tvhome.mitvplus` | Live TV | Free ad-supported streaming TV channels |
+| 21 | **personalDNSfilter** | `dnsfilter.android` | DNS & Privacy | Local DNS packet filter & hard OTA/telemetry block |
+| 22 | **Screen Saver** | `com.amazon.ftv.screensaver` | Ambient Display | Native Fire OS ambient screen saver |
+| 23 | **Amazon Appstore** | `com.amazon.venezia` | Official Store | Official Amazon app installation & updates |
 | 24 | **DumbTV Home** | `tv.dumbtv.home` | System Launcher | Sole exclusive launcher with 4-chip header |
 
 ---
@@ -56,31 +56,30 @@ All installed media, utility, and streaming applications are accounted for and o
 
 Every application on the Fire TV Stick is strictly organized in the exact order requested, with Amazon bloat suppressed:
 
-### A. Visible Tiles on Home Screen Grid (Exact Order):
-1. `org.smarttube.stable` (**SmartTube**) — Ad-free YouTube client with SponsorBlock
-2. `in.startv.hotstar` (**JioHotstar**) — Disney+ Hotstar India movies, series & sports
-3. `com.yupptv.firetv` (**YuppTV**) — Live Indian TV channels & entertainment
-4. `com.vzy.one.firestick` (**VZY**) — Fire TV streaming client
-5. `com.stremio.one` (**Stremio**) — Torrent & Debrid streaming hub
-6. `com.onemainstream.sonyliv.android` (**Sony LIV**) — Official Fire TV India live sports & TV
-7. `com.viewlift.hoichoiprod` (**Hoichoi**) — Bengali regional entertainment platform
-8. `com.zee5.amazon` (**Zee5**) — Indian originals, movies, and broadcast shows
-9. `com.nuvio.tv` (**Nuvio TV**) — Modern open streaming client
-10. `com.amazon.firebat` (**Prime Video**) — Amazon Prime Video streaming catalog
-11. `com.discoveryplus.tv.fire` (**discovery+**) — Discovery Channel documentaries & science
-12. `com.mxtech.videoplayer.television` (**MX Player TV**) — Hardware-accelerated player & OTT
-13. `io.gh.reisxd.tizentube.cobalt` (**TizenTube Cobalt**) — Native Cobalt-based YouTube client
-14. `com.music.bitchord.tv` (**BitChord TV**) — High-fidelity ad-free music & audio player
-15. `com.fancode.tv` (**FanCode**) — Official Android TV live sports streaming
-16. `org.videolan.vlc` (**VLC Media Player**) — Universal codec video/audio engine
-17. `com.esaba.downloader` (**Downloader**) — Direct web browser & APK downloader
-18. `org.acestream.media.atv` (**Ace Stream Media**) — P2P multimedia streaming and casting engine
-19. `com.yablio.sendfilestotv` (**Send Files to TV**) — Wi-Fi direct file transfer utility
-20. `visnkmr.apps.filexplorer` (**File Explorer**) — Local and USB filesystem management
-21. `com.valvesoftware.steamlink` (**Steam Link**) — Low-latency PC game streaming to Fire TV
-22. `com.mitv.tvhome.mitvplus` (**Xiaomi TV+**) — Free ad-supported streaming TV channels
-23. `com.amazon.ftv.screensaver` (**Screen Saver**) — Native Fire OS ambient screen saver
-24. `com.amazon.venezia` (**Amazon Appstore**) — Preserved at the very end for official app updates
+### A. Visible Tiles on Home Screen Grid (Exact Order - 23 Apps):
+1. `org.smarttube.stable` (**SmartTube**) - Ad-free YouTube client with SponsorBlock
+2. `in.startv.hotstar` (**JioHotstar**) - Disney+ Hotstar India movies, series & sports
+3. `com.yupptv.firetv` (**YuppTV**) - Live Indian TV channels & entertainment
+4. `com.vzy.one.firestick` (**VZY**) - Fire TV streaming client
+5. `com.stremio.one` (**Stremio**) - Torrent & Debrid streaming hub
+6. `com.onemainstream.sonyliv.android` (**Sony LIV**) - Official Fire TV India live sports & TV
+7. `com.viewlift.hoichoiprod` (**Hoichoi**) - Bengali regional entertainment platform
+8. `com.zee5.amazon` (**Zee5**) - Indian originals, movies, and broadcast shows
+9. `com.nuvio.tv` (**Nuvio TV**) - Modern open streaming client
+10. `com.amazon.firebat` (**Prime Video**) - Amazon Prime Video streaming catalog
+11. `com.discoveryplus.tv.fire` (**discovery+**) - Discovery Channel documentaries & science
+12. `io.gh.reisxd.tizentube.cobalt` (**TizenTube Cobalt**) - Native Cobalt-based YouTube client
+13. `com.music.bitchord.tv` (**BitChord TV**) - High-fidelity ad-free music & audio player
+14. `com.fancode.tv` (**FanCode**) - Official Android TV live sports streaming
+15. `org.videolan.vlc` (**VLC Media Player**) - Universal codec video/audio engine
+16. `com.esaba.downloader` (**Downloader**) - Direct web browser & APK downloader
+17. `com.yablio.sendfilestotv` (**Send Files to TV**) - Wi-Fi direct file transfer utility
+18. `visnkmr.apps.filexplorer` (**File Explorer**) - Local and USB filesystem management
+19. `com.valvesoftware.steamlink` (**Steam Link**) - Low-latency PC game streaming to Fire TV
+20. `com.mitv.tvhome.mitvplus` (**Xiaomi TV+**) - Free ad-supported streaming TV channels
+21. `dnsfilter.android` (**personalDNSfilter**) - Local DNS packet filter & hard OTA blocker (placed before screensaver)
+22. `com.amazon.ftv.screensaver` (**Screen Saver**) - Native Fire OS ambient screen saver
+23. `com.amazon.venezia` (**Amazon Appstore**) - Preserved at the very end for official app updates
 
 ### B. Suppressed Bloatware Tiles (`apps.hide`):
 - `com.amazon.ssm` (**System Status Monitor**) — Developer diagnostic HUD hidden from grid.

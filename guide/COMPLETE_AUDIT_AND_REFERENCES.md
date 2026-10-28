@@ -381,20 +381,19 @@ To elevate DumbTV Home into a complete TV appliance dashboard, the top-right hea
 | **Zee5** | `com.zee5.amazon` | Official Fire TV Edition | Active (#8) |
 | **Nuvio TV** | `com.nuvio.tv` | v1.0.0 armeabi-v7a | Active (#9) |
 | **Prime Video** | `com.amazon.firebat` | Official Fire OS Leanback | Active (#10) |
-| **discovery+** | `com.discoveryplus.tv.fire` | Official Fire TV Edition | Active (#11) |
-| **MX Player TV**| `com.mxtech.videoplayer.television`| Leanback TV Edition | Active (#12) |
-| **TizenTube Cobalt** | `io.gh.reisxd.tizentube.cobalt` | v2.0.3 ARM | Active (#13) |
-| **BitChord TV** | `com.music.bitchord.tv` | v1.8.1 TV Edition | Active (#14) |
-| **FanCode** | `com.fancode.tv` | Official Android TV Build | Active (#15) |
-| **VLC** | `org.videolan.vlc` | Official Android TV | Active (#16) |
-| **Downloader** | `com.esaba.downloader` | AFTVnews Utility | Active (#17) |
-| **Ace Stream** | `org.acestream.media.atv` | Leanback TV Edition | Active (#18) |
-| **Send Files to TV** | `com.yablio.sendfilestotv` | File Utility | Active (#19) |
-| **File Explorer**| `visnkmr.apps.filexplorer` | Utility | Active (#20) |
-| **Steam Link** | `com.valvesoftware.steamlink` | Gaming & Display | Active (#21) |
-| **Xiaomi TV+** | `com.mitv.tvhome.mitvplus` | Free Live TV | Active (#22) |
-| **Screen Saver** | `com.amazon.ftv.screensaver` | Ambient Display | Active (#23) |
-| **Amazon Appstore** | `com.amazon.venezia` | Official App Store | Active (#24) |
+| **discovery+** | com.discoveryplus.tv.fire | Official Fire TV Edition | Active (#11) |
+| **TizenTube Cobalt** | io.gh.reisxd.tizentube.cobalt | v2.0.3 ARM | Active (#12) |
+| **BitChord TV** | com.music.bitchord.tv | v1.8.1 TV Edition | Active (#13) |
+| **FanCode** | com.fancode.tv | Official Android TV Build | Active (#14) |
+| **VLC** | org.videolan.vlc | Official Android TV | Active (#15) |
+| **Downloader** | com.esaba.downloader | AFTVnews Utility | Active (#16) |
+| **Send Files to TV** | com.yablio.sendfilestotv | File Utility | Active (#17) |
+| **File Explorer**| isnkmr.apps.filexplorer | Utility | Active (#18) |
+| **Steam Link** | com.valvesoftware.steamlink | Gaming & Display | Active (#19) |
+| **Xiaomi TV+** | com.mitv.tvhome.mitvplus | Free Live TV | Active (#20) |
+| **personalDNSfilter** | dnsfilter.android | Upstream F-Droid Build | Active (#21) |
+| **Screen Saver** | com.amazon.ftv.screensaver | Ambient Display | Active (#22) |
+| **Amazon Appstore** | com.amazon.venezia | Official App Store | Active (#23) |
 
 ---
 

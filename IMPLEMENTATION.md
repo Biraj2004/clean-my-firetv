@@ -449,15 +449,14 @@ To elevate DumbTV Home into a complete TV appliance dashboard, the top-right hea
 | **FanCode** | `com.fancode.tv` | Official Android TV Build | Active (#7) |
 | **YuppTV** | `com.yupptv.firetv` | Official Fire TV Build | Active (#8) |
 | **VZY** | `com.vzy.one.firestick` | Official Fire TV Build | Active (#9) |
-| **MX Player TV**| `com.mxtech.videoplayer.television`| Leanback TV Edition | Active (#10) |
-| **JioHotstar** | `in.startv.hotstar` | Official Android TV | Active |
-| **Zee5** | `com.zee5.amazon` | Official Fire TV Edition | Active |
-| **Hoichoi** | `com.viewlift.hoichoiprod` | Official Android TV | Active |
-| **VLC** | `org.videolan.vlc` | Official Android TV | Active |
-| **Downloader** | `com.esaba.downloader` | AFTVnews Utility | Active |
-| **Ace Stream** | `org.acestream.media.atv` | Leanback TV Edition | Active |
-| **Send Files to TV** | `com.yablio.sendfilestotv` | File Utility | Active |
-| **File Explorer**| `visnkmr.apps.filexplorer` | Utility | Active |
+| **JioHotstar** | in.startv.hotstar | Official Android TV | Active (#2) |
+| **Zee5** | com.zee5.amazon | Official Fire TV Edition | Active (#8) |
+| **Hoichoi** | com.viewlift.hoichoiprod | Official Android TV | Active (#7) |
+| **VLC** | org.videolan.vlc | Official Android TV | Active (#15) |
+| **Downloader** | com.esaba.downloader | AFTVnews Utility | Active (#16) |
+| **personalDNSfilter** | dnsfilter.android | Upstream F-Droid Build | Active (#21) |
+| **Send Files to TV** | com.yablio.sendfilestotv | File Utility | Active (#17) |
+| **File Explorer**| isnkmr.apps.filexplorer | Utility | Active (#18) |
 
 ---
 
@@ -480,11 +479,11 @@ To elevate DumbTV Home into a complete TV appliance dashboard, the top-right hea
 Per user instructions, the home screen grid was rearranged into the following exact operational sequence via [home.conf](file:///e:/01.%20GitHub%20Repo%20Projects/clean-my-firetv/home.conf):
 
 ```properties
-apps.order=org.smarttube.stable,in.startv.hotstar,com.yupptv.firetv,com.vzy.one.firestick,com.stremio.one,com.onemainstream.sonyliv.android,com.viewlift.hoichoiprod,com.zee5.amazon,com.nuvio.tv,com.amazon.firebat,com.discoveryplus.tv.fire,com.mxtech.videoplayer.television,io.gh.reisxd.tizentube.cobalt,com.music.bitchord.tv,com.fancode.tv,org.videolan.vlc,com.esaba.downloader,org.acestream.media.atv,com.yablio.sendfilestotv,visnkmr.apps.filexplorer,com.valvesoftware.steamlink,com.mitv.tvhome.mitvplus,com.amazon.ftv.screensaver,com.amazon.venezia
+apps.order=org.smarttube.stable,in.startv.hotstar,com.yupptv.firetv,com.vzy.one.firestick,com.stremio.one,com.onemainstream.sonyliv.android,com.viewlift.hoichoiprod,com.zee5.amazon,com.nuvio.tv,com.amazon.firebat,com.discoveryplus.tv.fire,io.gh.reisxd.tizentube.cobalt,com.music.bitchord.tv,com.fancode.tv,org.videolan.vlc,com.esaba.downloader,com.yablio.sendfilestotv,visnkmr.apps.filexplorer,com.valvesoftware.steamlink,com.mitv.tvhome.mitvplus,dnsfilter.android,com.amazon.ftv.screensaver,com.amazon.venezia
 ```
 
 - **Prime Video Integration**: `com.amazon.firebat` was unhidden from `apps.hide` and mapped to #10 in the grid.
-- **Amazon Appstore Pinned to End**: `com.amazon.venezia` was placed at position #24 (very last tile), preceded by `com.amazon.ftv.screensaver` (#23).
+- **Amazon Appstore Pinned to End**: `com.amazon.venezia` was placed at position #23 (very last tile), preceded by `com.amazon.ftv.screensaver` (#22) and `dnsfilter.android` (#21).
 
 ### 12.2 Airtight Boot & Interception Architecture
 To guarantee that Amazon's stock home screen never appears unexpectedly (even upon system reboot or wake):

@@ -110,7 +110,7 @@
 
 ---
 
-<h2 align="center">Curated 24-App Home Grid</h2>
+<h2 align="center">Curated 23-App Home Grid</h2>
 
 Applications are structured in the battle-tested, user-curated operational layout:
 
@@ -120,10 +120,10 @@ Applications are structured in the battle-tested, user-curated operational layou
 |:---:|:---|
 | **Row 1** | **[SmartTube](https://github.com/yuliskov/SmartTube)** • **JioHotstar** • **YuppTV** • **Vzy** |
 | **Row 2** | **[Stremio](https://www.stremio.com/)** • **Sony LIV** • **Hoichoi** • **Zee5** |
-| **Row 3** | **Nuvio TV** • **Prime Video** • **discovery+** • **MX Player TV** |
-| **Row 4** | **[TizenTube Cobalt](https://github.com/reisxd/TizenTubeCobalt)** • **[BitChord TV](https://github.com/kushagrasinghx/BitChord)** • **FanCode** • **VLC Media Player** |
-| **Row 5** | **Downloader** • **Ace Stream Media** • **Send Files to TV** • **File Explorer** |
-| **Row 6** | **Steam Link** • **Xiaomi TV+** • **Screen Saver** • **Amazon Appstore** *(Pinned End)* |
+| **Row 3** | **Nuvio TV** • **Prime Video** • **discovery+** • **[TizenTube Cobalt](https://github.com/reisxd/TizenTubeCobalt)** |
+| **Row 4** | **[BitChord TV](https://github.com/kushagrasinghx/BitChord)** • **FanCode** • **VLC Media Player** • **Downloader** |
+| **Row 5** | **Send Files to TV** • **File Explorer** • **Steam Link** • **Xiaomi TV+** |
+| **Row 6** | **personalDNSfilter** • **Screen Saver** • **Amazon Appstore** *(Pinned End)* |
 
 </div>
 
@@ -244,7 +244,7 @@ python scripts/rollback.py --category alexa        # Re-enable Alexa listening s
 
 - [**Master Agent Prompt**](MASTER_PROMPT.md): Single gated AI prompt to transform any Fire TV from bloated to high-performance.
 - [**Remote User Guide**](guide/FIRETV_GUIDE.md): Remote control button shortcuts, quick settings access, and daily tile management.
-- [**Active Apps and Services Inventory**](guide/ACTIVE_APPS_AND_SERVICES.md): Breakdown of all 24 apps, resident Android daemons, and RAM allocations.
+- [**Active Apps and Services Inventory**](guide/ACTIVE_APPS_AND_SERVICES.md): Breakdown of all 23 apps, resident Android daemons, and RAM allocations.
 - [**Complete Architectural Audit**](guide/COMPLETE_AUDIT_AND_REFERENCES.md): In-depth comparison with [dumbtv.org/blocked](https://dumbtv.org/blocked), safety whitelists, and AppOps telemetry starvation.
 - [**Implementation Journal**](IMPLEMENTATION.md): Complete chronological audit log, smali bytecode patches, and universal hardware architecture.
 - [**Security Policy**](SECURITY.md): Privacy assurances, network security model, and vulnerability reporting.
@@ -276,7 +276,7 @@ clean-my-firetv/
 ├── docs/                            # Reserved for web documentation deployment
 │   └── .gitkeep
 ├── guide/                           # Technical reference guides & manuals
-│   ├── ACTIVE_APPS_AND_SERVICES.md  # Inventory of 24 apps and system services
+│   ├── ACTIVE_APPS_AND_SERVICES.md  # Inventory of 23 apps and system services
 │   ├── COMPLETE_AUDIT_AND_REFERENCES.md # Deep architectural audit & dumbtv comparisons
 │   ├── FIRETV_GUIDE.md              # Remote control user manual & visual showcase
 │   └── IMPLEMENTATION.md            # Technical specifications & change history
@@ -291,7 +291,7 @@ clean-my-firetv/
 │   ├── post_reboot_audit.py         # Live health and memory audit
 │   ├── sanity_test.py               # 11-step automated verification suite
 │   └── rollback.py                  # 100% reversible undo engine
-├── home.conf                        # 24-app layout and visual configurations
+├── home.conf                        # 23-app layout and visual configurations
 ├── main.py                          # Unified CLI entry point and interactive menu
 ├── MASTER_PROMPT.md                 # Single comprehensive prompt for AI agents
 ├── run.bat                          # 1-click Windows launcher

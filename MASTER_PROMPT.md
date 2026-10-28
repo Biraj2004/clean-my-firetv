@@ -120,12 +120,12 @@ Reference repositories and specifications:
    - **TizenTube Cobalt** (`io.gh.reisxd.tizentube.cobalt`): Ad-free leanback YouTube client with live chat.
    - **BitChord TV** (`com.music.bitchord.tv`): YouTube Music on TV with synchronized lyrics.
    - **Nuvio TV** (`com.nuvio.tv`): Leanback live streaming client.
-   - **VLC for Android TV** (`org.videolan.vlc`) / **MX Player TV**: Hardware-accelerated media player.
+   - **VLC for Android TV** (`org.videolan.vlc`): Hardware-accelerated universal codec media player.
+   - **personalDNSfilter** (`dnsfilter.android`): Local DNS packet filter & hard Amazon OTA/telemetry blocker.
    - **Downloader by AFTVnews** (`com.esaba.downloader`): Trusted file downloader & installer.
    - **Send Files to TV** (`com.yablio.sendfilestotv`): Fast local network APK and video transfer.
    - **File Explorer TV** (`visnkmr.apps.filexplorer`): Simple remote-friendly file manager.
    - **Steam Link** (`com.valvesoftware.steamlink`): Low-latency 4K PC game streaming.
-   - **Ace Stream Media** (`org.acestream.media.atv`): P2P live sports streaming.
 
 2. **Gate Question to User**:
    - Check which of these apps are already installed (`pm path <pkg>`).
@@ -227,7 +227,7 @@ Reference repositories and specifications:
    - Launch DumbTV Home: `adb shell am start -n tv.dumbtv.home/.Home`
 
 5. **Gate Question to User**:
-   - *"DumbTV Home has been deployed with custom dark wallpaper, 24 organized app tiles, and instant 0ms Home button interception. Check your TV screen now. Is DumbTV Home visible with your apps? (Y/n)"*
+   - *"DumbTV Home has been deployed with custom dark wallpaper, 23 organized app tiles, and instant 0ms Home button interception. Check your TV screen now. Is DumbTV Home visible with your apps? (Y/n)"*
 
 ---
 
