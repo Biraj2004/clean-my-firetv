@@ -159,6 +159,7 @@ Reference repositories and specifications:
 4. **Execute & Record**:
    - Run `pm disable-user --user 0 <pkg>` for all target packages present on the device.
    - Apply AppOps `RUN_ANY_IN_BACKGROUND ignore` on OTA and metrics daemons.
+   - Optionally deploy `personalDNSfilter` (`python scripts/dnsfilter.py`) to block Amazon update domains (`softwareupdates.amazon.com`, `fota.amazon.com`, etc.) at the local DNS packet level.
    - Record every forward and reverse command in `logs/journal.jsonl`.
    - Verify disabled status via `pm list packages -d`.
 
@@ -203,7 +204,7 @@ Reference repositories and specifications:
 1. **Deploy Universal Binary (v1.0.1)**:
    - Check if `tv.dumbtv.home` is already installed: `adb shell pm path tv.dumbtv.home`.
    - **Important**: If already installed and functional, **skip re-installation** to preserve active accessibility service permissions.
-   - If not installed (or if explicitly updating), install `dumbtv-enhanced-home-v1.0.1.apk` (built with `QUERY_ALL_PACKAGES`, `minSdkVersion: 21`, broadened `contains("HomeActivity")` guard, and remote `KEYCODE_SETTINGS` handler):
+   - If not installed (or if explicitly updating), install `dumbtv-enhanced-home-v1.0.1.apk` (auto-fetched by `scripts/launcher.py` or downloaded from GitHub Releases: `https://github.com/Biraj2004/clean-my-firetv/releases/download/v1.0.1/dumbtv-enhanced-home-v1.0.1.apk`):
      `adb install -r dumbtv-enhanced-home-v1.0.1.apk`
 
 2. **Push Configuration & Ambient Wallpaper**:

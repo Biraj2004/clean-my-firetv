@@ -23,6 +23,7 @@ from scripts import debloat as phase2
 from scripts import optimize as phase3
 from scripts import lockdown as phase4
 from scripts import launcher as phase5
+from scripts import dnsfilter as phase_dns
 from scripts import post_reboot_audit as audit_module
 from scripts import sanity_test as sanity_module
 from scripts import rollback as rollback_module
@@ -116,14 +117,15 @@ def interactive_menu(adb: ADBClient, journal: ActionJournal):
         print("  3. Run Safe Debloat (Disable ads, telemetry & Alexa)")
         print("  4. Apply Privacy & System Optimizations (DoT DNS, 0.5x anims)")
         print("  5. Apply Soft OTA Block (Starve update daemons)")
-        print("  6. Create Pre-Clean System Snapshot / Backup")
-        print("  7. Run Comprehensive Post-Reboot Audit & Service Inspection")
-        print("  8. Run Sanity & Navigation Verification Test Suite")
-        print("  9. Rollback / Emergency Restore All Changes")
+        print("  6. Deploy personalDNSfilter (Airtight OTA & Telemetry Blocker)")
+        print("  7. Create Pre-Clean System Snapshot / Backup")
+        print("  8. Run Comprehensive Post-Reboot Audit & Service Inspection")
+        print("  9. Run Sanity & Navigation Verification Test Suite")
+        print("  10. Rollback / Emergency Restore All Changes")
         print("  0. Exit")
         print("-" * 70)
 
-        choice = input("Select an option [0-9]: ").strip()
+        choice = input("Select an option [0-10]: ").strip()
         if choice == "1":
             run_full_pipeline(adb, journal)
         elif choice == "2":
@@ -135,12 +137,14 @@ def interactive_menu(adb: ADBClient, journal: ActionJournal):
         elif choice == "5":
             phase4.run_lockdown(adb, journal)
         elif choice == "6":
-            phase1.run_backup(adb)
+            phase_dns.setup_dnsfilter(adb, journal)
         elif choice == "7":
-            audit_module.run_audit(adb)
+            phase1.run_backup(adb)
         elif choice == "8":
-            sanity_module.run_sanity()
+            audit_module.run_audit(adb)
         elif choice == "9":
+            sanity_module.run_sanity()
+        elif choice == "10":
             rollback_module.main()
         elif choice == "0":
             print("[*] Exiting. Enjoy your clean Fire TV!")
@@ -159,6 +163,7 @@ def main():
     parser.add_argument("--debloat", action="store_true", help="Execute safe debloat and telemetry disabling")
     parser.add_argument("--optimize", action="store_true", help="Apply system privacy, DNS, and speed tuning")
     parser.add_argument("--lockdown", action="store_true", help="Starve background OTA update services")
+    parser.add_argument("--dnsfilter", action="store_true", help="Deploy personalDNSfilter local ad and OTA blocking engine")
     parser.add_argument("--backup", action="store_true", help="Create pre-clean state backup snapshot")
     parser.add_argument("--audit", action="store_true", help="Inspect device health, memory, and running services")
     parser.add_argument("--sanity", action="store_true", help="Run automated sanity and navigation tests")
@@ -180,6 +185,8 @@ def main():
         phase3.run_optimize(adb, journal)
     elif args.lockdown:
         phase4.run_lockdown(adb, journal)
+    elif args.dnsfilter:
+        phase_dns.setup_dnsfilter(adb, journal)
     elif args.backup:
         phase1.run_backup(adb)
     elif args.audit:
