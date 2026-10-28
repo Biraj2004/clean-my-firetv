@@ -22,27 +22,33 @@ class ADBClient:
         if os.environ.get("ADB_PATH") and os.path.exists(os.environ["ADB_PATH"]):
             return os.environ["ADB_PATH"]
 
-        # Check PATH
+        # Prioritize modern official Android SDK platform-tools over legacy PATH entries
+        local_app_data = os.environ.get("LOCALAPPDATA", "")
+        home = os.path.expanduser("~")
+        preferred_sdk_paths = [
+            os.path.join(local_app_data, "Android", "Sdk", "platform-tools", "adb.exe") if local_app_data else "",
+            os.path.join(home, "Android", "Sdk", "platform-tools", "adb"),
+            os.path.join(home, "Library", "Android", "sdk", "platform-tools", "adb"),
+            r"C:\platform-tools\adb.exe",
+        ]
+        for candidate in preferred_sdk_paths:
+            if candidate and os.path.exists(candidate):
+                return candidate
+
+        # Fall back to PATH
         import shutil
         adb_path = shutil.which("adb")
         if adb_path:
             return adb_path
 
-        # Check common standard locations on Windows, macOS, Linux
-        local_app_data = os.environ.get("LOCALAPPDATA", "")
-        home = os.path.expanduser("~")
-        candidates = [
-            os.path.join(local_app_data, "Android", "Sdk", "platform-tools", "adb.exe") if local_app_data else "",
+        # Fall back to other common locations
+        fallback_candidates = [
             r"C:\adb\adb.exe",
-            r"C:\platform-tools\adb.exe",
-            os.path.join(home, "Android", "Sdk", "platform-tools", "adb"),
-            os.path.join(home, "Library", "Android", "sdk", "platform-tools", "adb"),
             "/usr/bin/adb",
             "/usr/local/bin/adb",
             "/opt/homebrew/bin/adb",
         ]
-
-        for candidate in candidates:
+        for candidate in fallback_candidates:
             if candidate and os.path.exists(candidate):
                 return candidate
 

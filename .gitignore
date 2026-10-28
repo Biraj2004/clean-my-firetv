@@ -15,7 +15,7 @@ scratch/
 # Downloaded binaries & caches
 build/
 *.apk
-!dumbtv-enhanced-home.apk
+!dumbtv-enhanced-home*.apk
 __pycache__/
 *.pyc
 
